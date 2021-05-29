@@ -4,16 +4,16 @@
       "name": "Ultra mimi",
       "barcode_number": "8998009011696",
       "price": 3500,
-      "stock": 8,
-      "stockBefore": 8,
+      "stock": 3,
+      "stockBefore": 3,
       "id": 1
     },
     {
       "name": "test",
-      "barcode_number": "4214124124124",
-      "price": 412412,
-      "stock": 5,
-      "stockBefore": 5,
+      "barcode_number": "2421412412442",
+      "price": 4321,
+      "stock": 2,
+      "stockBefore": 2,
       "id": 2
     }
   ],
@@ -33,5 +33,5 @@
       "OrderId": "OD101-12197"
     }
   ],
-  "report": []
+  "reports": []
 }

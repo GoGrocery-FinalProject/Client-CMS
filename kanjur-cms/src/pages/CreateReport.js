@@ -19,19 +19,17 @@ function CreateReport() {
     ArrayReport.push({
       ProductId: el.id,
       stockRecorded: el.stock,
-      stockReal: el.stock
+      stockReal: el.stock,
+      price: el.price
     })
   })
   const [report, setReport] = useState(ArrayReport)
 
   function handleRealStockChange(index, value) {
-    if(report[index].stockRecorded !== +value){
-      let dupeReport = [...report]
-      let before = dupeReport[index]
-      dupeReport[index] = {...before, stockReal: +value}
-      setReport(dupeReport)
-    } else {
-    }
+    let dupeReport = [...report]
+    let before = dupeReport[index]
+    dupeReport[index] = {...before, stockReal: +value}
+    setReport(dupeReport)
   }
 
   function handleUpdateProduct(index, product){
@@ -53,6 +51,18 @@ function CreateReport() {
     return income
   }
 
+  function getDailyLosses(products){
+    let losses = 0
+    products.forEach(el => {
+      losses += (el.stockRecorded - el.stockReal) * el.price
+    })
+    return losses
+  }
+
+  function handleCreateReport(products, transactions, income, loss) {
+    console.log(products, transactions, income, loss)
+  }
+
   return (
     <div style={{ display: "flex"}}>
     <Navbar/>
@@ -70,9 +80,6 @@ function CreateReport() {
               <th className="col-2">Action</th>
             </tr>
           </thead>
-          {/**
-           * nanti looping pake map buat list product
-          */}
           {
             products.map((el, i) => {
               return (
@@ -101,11 +108,17 @@ function CreateReport() {
             })
           }
         </table>
-        <button>GENERATE REPORT</button>
+        <button
+          onClick={(e)=>{
+            e.preventDefault()
+            handleCreateReport(report, transaction, getDailyIncome(transaction), getDailyLosses(report))
+          }}
+        >GENERATE REPORT</button>
       </div>
       {JSON.stringify(report, null, 2)}"OUTPUT PRODUCT"<br></br>
       {JSON.stringify(transaction, null, 2)}"OUTPUT TRANSACTION"<br></br>
-      {JSON.stringify(getDailyIncome(transaction))}"OUTPUT TOTAL INCOME"
+      {JSON.stringify(getDailyIncome(transaction))}"OUTPUT TOTAL INCOME"<br></br>
+      {JSON.stringify(getDailyLosses(report))}"OUTPUT TOTAL LOSSES"
     </div>
     </div>
   )
