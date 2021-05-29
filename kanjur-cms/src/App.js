@@ -15,6 +15,7 @@ import HomePage from './pages/HomePage'
 import AddProductPage from './pages/AddProductPage'
 import EditProductPage from './pages/EditProductPage'
 import GuardedRoute from './components/GuarderRoute'
+import CreateReport from './pages/CreateReport'
 
 import { login } from './store/action/action'
 
@@ -34,9 +35,10 @@ function App() {
             {/* <Route exact path='/' component={ HomePage }/> */}
             <Route path='/about' component={AboutPage} />
             <Route path='/login' render={(props) => <Login {...props} auth={isAuthenticated}/>}/>
-            <Route path='/add' component={AddProductPage} />
+            <GuardedRoute path='/add' component={AddProductPage} auth={isAuthenticated} />
             <Route path='/:id/edit' component={EditProductPage} />
             {/* <Route path='*' component={ NotFound }/> */}
+            <GuardedRoute path='/report' component={CreateReport} auth={isAuthenticated} />
           </Switch>
         </div>
       </Router>

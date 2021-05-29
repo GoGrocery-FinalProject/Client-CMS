@@ -1,12 +1,18 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import ListProduct from '../components/ListProduct'
 import Navbar from '../components/Navbar'
+import { fetchProduct } from '../store/action/action'
 
 function HomePage() {
   const history = useHistory()
   const products = useSelector(state => state.products)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchProduct())    
+  }, [dispatch])
 
   function handleAddProduct() {
     history.push('/add')
@@ -20,7 +26,7 @@ function HomePage() {
     <>
     <Navbar/>
     <div className="home container">
-    <h2> Your Product List {JSON.stringify(products)}</h2>
+    <h2>Your Product List</h2>
     <div className="d-flex justify-content-between">
       <button 
         className="btn btn-secondary"
@@ -52,12 +58,17 @@ function HomePage() {
           {/**
            * nanti looping pake map buat list product
           */}
-          <ListProduct
-            name="A"
-            stock={5}
-            price={10000}
-            barcodenumber={8997204440164}
-          />
+          {
+            products.map(el => {
+              return (
+                <ListProduct
+                  key={el.id}
+                  product={el}
+                />
+              )
+            })
+          }
+          
         </table>
       </div>
       <div className="container col-4">

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { addProduct } from '../store/action/action'
 import validateInput from '../helpers/inputValidation'
 
 function AddProductPage() {
   const dispatch = useDispatch()
+  const history = useHistory()
 
   const [name, setName] = useState('')
   const [barcode, setBarcode] = useState('')
@@ -22,6 +24,7 @@ function AddProductPage() {
       setBarcode('')
       setStock('')
       setPrice('')
+      history.push('/')
     }
   }
 

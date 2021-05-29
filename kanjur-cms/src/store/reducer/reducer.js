@@ -1,5 +1,6 @@
 const initialState = {
   products: [],
+  product: {},
   isAuthenticated: false,
   user: {}
 }
@@ -9,6 +10,8 @@ function reducer(state = initialState, action) {
   switch(type) {
     case "GET_ALL_PRODUCT":
       return { ...state, products: payload }
+    case "GET_PRODUCT_ID":
+      return { ...state, product: payload }
     case "LOGIN":
       return { ...state, user: payload, isAuthenticated: true }
     case "LOGOUT":

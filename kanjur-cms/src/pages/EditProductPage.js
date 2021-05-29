@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import validateInput from '../helpers/inputValidation'
 import { editProduct } from '../store/action/action'
 
 function EditProductPage(props) {
   const dispatch = useDispatch()
-
+  const history = useHistory()
   const id = useParams().id
   const data = props.location.state.data
 
   const [name, setName] = useState(data.name)
-  const [barcode, setBarcode] = useState(data.barcodenumber)
+  const [barcode, setBarcode] = useState(data.barcode_number)
   const [stock, setStock] = useState(data.stock)
   const [price, setPrice] = useState(data.price)
 
@@ -21,11 +21,12 @@ function EditProductPage(props) {
     if (message.length !== 0) {
       console.log(message.toString())
     } else {
-      dispatch(editProduct(id, { name, barcode, stock, price }))
+      dispatch(editProduct(id, { name, barcode, stock, price, stockBefore: data.stockBefore }))
       setName('')
       setBarcode('')
       setStock('')
       setPrice('')
+      history.push('/')
     }
   }
 

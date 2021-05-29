@@ -1,52 +1,60 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux' 
+import { deleteProduct, editProduct } from '../store/action/action'
 
 function ListProduct(props) {
   const history = useHistory()
   const dispatch = useDispatch()
 
   function handlePatchStock(newStock){
-    console.log(newStock)
+    let payload = {
+      name: props.product.name, 
+      stock: newStock, 
+      stockBefore: newStock, 
+      barcode: props.product.barcode_number,
+      price: props.product.price
+    }
+    dispatch(editProduct(props.product.id, payload))
   }
 
   function handleEdit() {
-    console.log('edit')
     history.push({
-      pathname: '/3/edit',
-      state: { data: props }
+      pathname: `/${props.product.id}/edit`,
+      state: { data: props.product }
     })
   }
 
   function handleDelete() {
     console.log('delete')
+    dispatch(deleteProduct(props.product.id))
   }
 
   return (
       <tbody>
       <tr>
-        <td>{ props.name }</td>
-        <td>{ props.barcodenumber }</td>
+        <td>{ props.product.name }</td>
+        <td>{ props.product.barcode_number }</td>
         <td>
           <button 
             className="btn btn-outline-danger" 
             style={{"width":"20%"}}
             onClick={e => {
               e.preventDefault()
-              handlePatchStock(props.stock-1)
+              handlePatchStock(props.product.stock-1)
             }}
           >-</button>
-          { props.stock }
+          { props.product.stock }
           <button 
             className="btn btn-outline-success" 
             style={{"width":"20%"}}
             onClick={e => {
               e.preventDefault()
-              handlePatchStock(props.stock+1)
+              handlePatchStock(props.product.stock+1)
             }}
           >+</button>
         </td>
-        <td>{ props.price }</td>
+        <td>{ props.product.price }</td>
         <td>
           <button 
             className="btn btn-outline-success" 
