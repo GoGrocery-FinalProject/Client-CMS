@@ -2,7 +2,7 @@ import React from 'react'
 import bacground from '../assets/bg_1.jpg'
 import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../store/action/action'
+import { login } from '../store/action/ProductAction'
 
 function Login({auth}) {
   const dispatch = useDispatch()

@@ -17,7 +17,7 @@ import EditProductPage from './pages/EditProductPage'
 import GuardedRoute from './components/GuarderRoute'
 import CreateReport from './pages/CreateReport'
 
-import { login } from './store/action/action'
+import { login } from './store/action/ProductAction'
 
 function App() {
   const isAuthenticated = (store.getState().isAuthenticated)

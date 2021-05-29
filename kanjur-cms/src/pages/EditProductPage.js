@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useParams, useHistory } from 'react-router-dom'
 import validateInput from '../helpers/inputValidation'
-import { editProduct } from '../store/action/action'
+import { editProduct } from '../store/action/ProductAction'
+import Navbar from '../components/Navbar'
 
 function EditProductPage(props) {
   const dispatch = useDispatch()
@@ -31,7 +32,9 @@ function EditProductPage(props) {
   }
 
   return (
-    <div id="addproduct-page" className="container" style={{ marginTop: '10%' }}>
+    <div style={{ display: "flex"}}>
+    <Navbar/>
+    <div id="addproduct-page" className="container" style={{marginTop: '10%', width: "85vw"}}>
       <h2>Edit product</h2>
       <form
         id="addform"
@@ -64,6 +67,7 @@ function EditProductPage(props) {
           Edit Product
         </button>
       </form>
+    </div>
     </div>
   )
 }

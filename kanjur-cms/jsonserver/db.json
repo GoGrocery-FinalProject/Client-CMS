@@ -4,9 +4,17 @@
       "name": "Ultra mimi",
       "barcode_number": "8998009011696",
       "price": 3500,
+      "stock": 8,
+      "stockBefore": 8,
+      "id": 1
+    },
+    {
+      "name": "test",
+      "barcode_number": "4214124124124",
+      "price": 412412,
       "stock": 5,
       "stockBefore": 5,
-      "id": 1
+      "id": 2
     }
   ],
   "users": [

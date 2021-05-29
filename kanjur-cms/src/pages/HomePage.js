@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import ListProduct from '../components/ListProduct'
 import Navbar from '../components/Navbar'
-import { fetchProduct } from '../store/action/action'
+import { fetchProduct } from '../store/action/ProductAction'
 
 function HomePage() {
   const history = useHistory()
   const products = useSelector(state => state.products)
   const dispatch = useDispatch()
+  const [filter, setFilter] = useState('')
 
   useEffect(() => {
     dispatch(fetchProduct())    
@@ -23,11 +24,12 @@ function HomePage() {
   }
 
   return (
-    <>
+    <div style={{ display: "flex"}}>
     <Navbar/>
-    <div className="home container">
+    <div className="home container" style={{width: "85vw", marginTop: "5vh"}}>
     <h2>Your Product List</h2>
     <div className="d-flex justify-content-between">
+    <input type="text" value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter Here"></input>
       <button 
         className="btn btn-secondary"
         onClick={(e) => {
@@ -59,7 +61,9 @@ function HomePage() {
            * nanti looping pake map buat list product
           */}
           {
-            products.map(el => {
+            products.filter(item => {
+              return item.name.toLowerCase().includes(filter.toLocaleLowerCase())
+          }).map(el => {
               return (
                 <ListProduct
                   key={el.id}
@@ -76,7 +80,7 @@ function HomePage() {
       </div>
     </div>
   </div>
-  </>
+  </div>
   )
 }
 

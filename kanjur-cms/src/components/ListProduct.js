@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux' 
-import { deleteProduct, editProduct } from '../store/action/action'
+import { deleteProduct, editProduct } from '../store/action/ProductAction'
 
 function ListProduct(props) {
   const history = useHistory()

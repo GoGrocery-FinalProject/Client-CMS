@@ -72,7 +72,7 @@ export function addProduct(payload) {
       },
       data: {
         name: payload.name,
-        barcodenumber: payload.barcode,
+        barcode_number: payload.barcode,
         price: +payload.price,
         stock: +payload.stock,
         stockBefore: +payload.stock
