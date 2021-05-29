@@ -1,0 +1,37 @@
+{
+  "products": [
+    {
+      "name": "Ultra mimi",
+      "barcode_number": "8998009011696",
+      "price": 3500,
+      "stock": 8,
+      "stockBefore": 8,
+      "id": 1
+    },
+    {
+      "name": "test",
+      "barcode_number": "4214124124124",
+      "price": 412412,
+      "stock": 5,
+      "stockBefore": 5,
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "user@mail.com",
+      "password": 1234
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "UserId": 1,
+      "Products": "[{ProductId:1, quantity:3}]",
+      "totalPrice": 10500,
+      "OrderId": "OD101-12197"
+    }
+  ],
+  "report": []
+}
