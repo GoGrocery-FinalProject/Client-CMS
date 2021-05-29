@@ -12,6 +12,10 @@ function ListProduct(props) {
 
   function handleEdit() {
     console.log('edit')
+    history.push({
+      pathname: '/3/edit',
+      state: { data: props }
+    })
   }
 
   function handleDelete() {

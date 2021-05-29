@@ -1,21 +1,24 @@
 import React from 'react'
 import bacground from '../assets/bg_1.jpg'
-import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../store/action/action'
 
-function Login() {
-  const history = useHistory()
+function Login({auth}) {
   const dispatch = useDispatch()
+  const isAuthenticated = useSelector(state => state.isAuthenticated)
 
- function handleLogin() {
+  function handleLogin() {
+    localStorage.setItem('access_token', 'adatoken')
     dispatch(login())
-    history.push('/')
   }
 
+  if (isAuthenticated === true) {
+    return <Redirect to={'/'} />
+  }
   return (
     <div className="container-fluid">
-    <div className="row no-gutter" style={{marginTop: '20%'}}>
+    <div className="row no-gutter " style={{marginTop: '10%'}}>
       <div className="col-md-5 offset-1 d-none d-md-flex bg-image">
         <img width="100%" src={bacground} alt="bgimage"/>
       </div>
