@@ -13,6 +13,8 @@ function ListProduct(props) {
       stock: newStock, 
       stockBefore: newStock, 
       barcode: props.product.barcode_number,
+      image_url: props.product.image_url,
+      description: props.product.description,
       price: props.product.price
     }
     dispatch(editProduct(props.product.id, payload))
@@ -33,7 +35,9 @@ function ListProduct(props) {
   return (
       <tbody>
       <tr>
+        <td>{ props.product.id }</td>
         <td>{ props.product.name }</td>
+        <td><img alt="product-img" src={ props.product.image_url } width="100px"></img></td>
         <td>{ props.product.barcode_number }</td>
         <td>
           <button 
@@ -44,7 +48,7 @@ function ListProduct(props) {
               handlePatchStock(props.product.stock-1)
             }}
           >-</button>
-          { props.product.stock }
+          &nbsp;{ props.product.stock }&nbsp;
           <button 
             className="btn btn-outline-success" 
             style={{"width":"20%"}}

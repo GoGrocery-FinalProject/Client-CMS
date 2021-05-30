@@ -66,13 +66,15 @@ function CreateReport() {
   return (
     <div style={{ display: "flex"}}>
     <Navbar/>
-    <div className="row container" style={{width: "85vw", marginTop: "5vh"}}>
-      <div className="container col-12 table-wrapper-scroll-y my-custom-scrollbar">
+    <div className="row container-fluid" style={{width: "85vw", marginTop: "5vh"}}>
+      <div className="col-12 table-wrapper-scroll-y my-custom-scrollbar">
       <h2>Create Daily Product Report</h2>
         <table className="table table-striped table-hover">
           <thead className="table-dark">
             <tr>
-              <th className="col-4">Name</th>
+              <th className="col-1">Id</th>
+              <th className="col-2">Name</th>
+              <th className="col-2">Img Preview</th>
               <th className="col-2">Barcode Number</th>
               <th className="col-1">Current Stock</th>
               <th className="col-1">Recorded Stock</th>
@@ -85,20 +87,25 @@ function CreateReport() {
               return (
                 <tbody key={el.id}>
                 <tr>
+                  <td>{ el.id }</td>
                   <td>{ el.name }</td>
+                  <td><img alt="product-img" src={ el.image_url } width="100px"></img></td>
                   <td>{ el.barcode_number }</td>
-                  <td>{ el.stock }</td>
+                  <td className="form-label justify-content-center">{ el.stock }</td>
                   <td>{ report[i].stockRecorded}</td>
                   <td>
                     <input 
                       type="number" 
+                      className="form form-control "
                       value={ report[i].stockReal }
                       onChange={(e) => handleRealStockChange(i, e.target.value)}
                       style={{width: "100%"}}
                     >
                     </input>
                   </td>
-                  <td><button onClick={(e) => {
+                  <td><button 
+                  className="btn btn-outline-dark"
+                  onClick={(e) => {
                     e.preventDefault()
                     handleUpdateProduct(i, el)
                   }}>Update stock</button></td>
@@ -109,6 +116,7 @@ function CreateReport() {
           }
         </table>
         <button
+          className="btn btn-dark"
           onClick={(e)=>{
             e.preventDefault()
             handleCreateReport(report, transaction, getDailyIncome(transaction), getDailyLosses(report))

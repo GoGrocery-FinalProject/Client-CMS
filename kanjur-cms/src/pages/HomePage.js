@@ -50,10 +50,12 @@ function HomePage() {
         <table className="table table-striped table-hover">
           <thead className="table-dark">
             <tr>
-              <th className="col-4">Name</th>
+              <th className="col-1">Id</th>
+              <th className="col-2">Name</th>
+              <th className="col-2">Img Preview</th>
               <th className="col-2">Barcode Number</th>
               <th className="col-2">Stock</th>
-              <th className="col-2">Price</th>
+              <th className="col-1">Price</th>
               <th className="col-2">Action</th>
             </tr>
           </thead>

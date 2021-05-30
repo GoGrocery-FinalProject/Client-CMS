@@ -14,6 +14,7 @@ import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage'
 import AddProductPage from './pages/AddProductPage'
 import EditProductPage from './pages/EditProductPage'
+import TransactionPage from './pages/TransactionPage';
 import GuardedRoute from './components/GuarderRoute'
 import CreateReport from './pages/CreateReport'
 
@@ -39,6 +40,7 @@ function App() {
             <Route path='/:id/edit' component={EditProductPage} />
             {/* <Route path='*' component={ NotFound }/> */}
             <GuardedRoute path='/report' component={CreateReport} auth={isAuthenticated} />
+            <GuardedRoute path='/transaction' component={TransactionPage} auth={isAuthenticated} />
           </Switch>
         </div>
       </Router>

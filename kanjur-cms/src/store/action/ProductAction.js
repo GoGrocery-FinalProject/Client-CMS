@@ -73,6 +73,8 @@ export function addProduct(payload) {
       data: {
         name: payload.name,
         barcode_number: payload.barcode,
+        image_url: payload.image_url,
+        description: payload.description,
         price: +payload.price,
         stock: +payload.stock,
         stockBefore: +payload.stock
@@ -99,6 +101,8 @@ export function editProduct(id, payload) {
       data: {
         name: payload.name,
         barcode_number: payload.barcode,
+        image_url: payload.image_url,
+        description: payload.description,
         price: +payload.price,
         stock: +payload.stock,
         stockBefore: +payload.stockBefore
