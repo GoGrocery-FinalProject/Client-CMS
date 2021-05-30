@@ -66,11 +66,11 @@ function CreateReport() {
   return (
     <div style={{ display: "flex"}}>
     <Navbar/>
-    <div className="row container-fluid" style={{width: "85vw", marginTop: "5vh"}}>
-      <div className="col-12 table-wrapper-scroll-y my-custom-scrollbar">
-      <h2>Create Daily Product Report</h2>
-        <table className="table table-striped table-hover">
-          <thead className="table-dark">
+    <div className="row card container" style={{width: "85vw", marginTop: "5vh"}}>
+      <h2 className="card-header">Create Daily Product Report</h2>
+      <div className="card col-12 table-wrapper-scroll-y table-responsive my-custom-scrollbar" style={{height: "75vh"}}>
+        <table className="table table-hover table-nowrap" >
+          <thead className="thead-light">
             <tr>
               <th className="col-1">Id</th>
               <th className="col-2">Name</th>
@@ -78,8 +78,8 @@ function CreateReport() {
               <th className="col-2">Barcode Number</th>
               <th className="col-1">Current Stock</th>
               <th className="col-1">Recorded Stock</th>
-              <th className="col-1">Real Stock</th>
-              <th className="col-2">Action</th>
+              <th className="col-2">Real Stock</th>
+              <th className="col-1">Action</th>
             </tr>
           </thead>
           {
@@ -87,12 +87,12 @@ function CreateReport() {
               return (
                 <tbody key={el.id}>
                 <tr>
-                  <td>{ el.id }</td>
-                  <td>{ el.name }</td>
+                  <td className="text-heading font-semibold">{ el.id }</td>
+                  <td className="text-heading font-semibold">{ el.name }</td>
                   <td><img alt="product-img" src={ el.image_url } width="100px"></img></td>
-                  <td>{ el.barcode_number }</td>
+                  <td className="text-heading font-semibold">{ el.barcode_number }</td>
                   <td className="form-label justify-content-center">{ el.stock }</td>
-                  <td>{ report[i].stockRecorded}</td>
+                  <td className="text-heading font-semibold">{ report[i].stockRecorded}</td>
                   <td>
                     <input 
                       type="number" 
@@ -115,6 +115,7 @@ function CreateReport() {
             })
           }
         </table>
+      </div>
         <button
           className="btn btn-dark"
           onClick={(e)=>{
@@ -122,7 +123,6 @@ function CreateReport() {
             handleCreateReport(report, transaction, getDailyIncome(transaction), getDailyLosses(report))
           }}
         >GENERATE REPORT</button>
-      </div>
       {JSON.stringify(report, null, 2)}"OUTPUT PRODUCT"<br></br>
       {JSON.stringify(transaction, null, 2)}"OUTPUT TRANSACTION"<br></br>
       {JSON.stringify(getDailyIncome(transaction))}"OUTPUT TOTAL INCOME"<br></br>

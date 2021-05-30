@@ -17,6 +17,54 @@
       "stock": 2,
       "stockBefore": 2,
       "id": 2
+    },
+    {
+      "name": "test",
+      "barcode_number": "424124124124",
+      "price": 24566,
+      "stock": 5,
+      "stockBefore": 5,
+      "id": 3
+    },
+    {
+      "name": "test",
+      "barcode_number": "4241421412",
+      "price": 412,
+      "stock": 6,
+      "stockBefore": 6,
+      "id": 4
+    },
+    {
+      "name": "rwqrwqfasfas",
+      "barcode_number": "421421412412",
+      "price": 421412,
+      "stock": 5,
+      "stockBefore": 5,
+      "id": 5
+    },
+    {
+      "name": "421421421412",
+      "barcode_number": "4214124124124",
+      "price": 42141,
+      "stock": 4,
+      "stockBefore": 4,
+      "id": 6
+    },
+    {
+      "name": "241421421412412",
+      "barcode_number": "421421412412412",
+      "price": 4124,
+      "stock": 6,
+      "stockBefore": 6,
+      "id": 8
+    },
+    {
+      "name": "4214214124124214",
+      "barcode_number": "12421412421412",
+      "price": 42142,
+      "stock": 8,
+      "stockBefore": 8,
+      "id": 9
     }
   ],
   "users": [
@@ -30,9 +78,16 @@
     {
       "id": 1,
       "UserId": 1,
-      "Products": "[{ProductId:1, quantity:3}]",
+      "Products": "[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]",
       "totalPrice": 10500,
       "OrderId": "OD101-12197"
+    },
+    {
+      "id": 2,
+      "UserId": 1,
+      "Products": "[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]",
+      "totalPrice": 10500,
+      "OrderId": "OD101-12198"
     }
   ],
   "reports": []
