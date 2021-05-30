@@ -37,6 +37,8 @@ function CreateReport() {
       name: product.name,
       price: product.price,
       barcode: product.barcode_number,
+      image_url: product.image_url,
+      description: product.description,
       stock: report[index].stockReal,
       stockBefore: report[index].stockReal
     }
@@ -129,10 +131,10 @@ function CreateReport() {
             handleCreateReport(report, transaction, getDailyIncome(transaction), getDailyLosses(report))
           }}
         >GENERATE REPORT</button>
-      {JSON.stringify(report, null, 2)}"OUTPUT PRODUCT"<br></br>
+      {/* {JSON.stringify(report, null, 2)}"OUTPUT PRODUCT"<br></br>
       {JSON.stringify(transaction, null, 2)}"OUTPUT TRANSACTION"<br></br>
       {JSON.stringify(getDailyIncome(transaction))}"OUTPUT TOTAL INCOME"<br></br>
-      {JSON.stringify(getDailyLosses(report))}"OUTPUT TOTAL LOSSES"
+      {JSON.stringify(getDailyLosses(report))}"OUTPUT TOTAL LOSSES" */}
     </div>
     </div>
   )

@@ -62,15 +62,15 @@ function ListProduct(props) {
         <td>
           <button 
             className="btn btn-outline-success" 
-            style={{"width":"50%"}}
+            style={{"width":"80%"}}
             onClick={e => {
               e.preventDefault()
               handleEdit()
             }}
-          >Edit</button>
+          >Edit</button><br></br>
           <button 
             className="btn btn-outline-danger" 
-            style={{"width":"50%"}}
+            style={{"width":"80%"}}
             onClick={e => {
               e.preventDefault()
               handleDelete()

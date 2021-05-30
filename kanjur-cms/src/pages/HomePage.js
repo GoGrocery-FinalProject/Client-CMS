@@ -37,14 +37,14 @@ function HomePage() {
             placeholder="Filter by Name Here">
           </input>
           <button
-            className="btn btn-secondary"
+            className="btn btn-light"
             onClick={(e) => {
               e.preventDefault()
               handleAddProduct()
             }}
           >Add new Product</button>
           <button
-            className="btn btn-primary"
+            className="btn btn-warning"
             onClick={(e) => {
               e.preventDefault()
               handleReport()

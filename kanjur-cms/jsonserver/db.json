@@ -3,9 +3,11 @@
     {
       "name": "Ultra mimi",
       "barcode_number": "8998009011696",
+      "image_url": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-2556645/ultra_ultra-mimi-full-cream-susu-uht--125-ml-_full04.jpg",
+      "description": "susu fullcream 100ml",
       "price": 3500,
-      "stock": 4,
-      "stockBefore": 4,
+      "stock": 3,
+      "stockBefore": 3,
       "id": 1
     },
     {
@@ -63,6 +65,16 @@
       "stock": 7,
       "stockBefore": 7,
       "id": 9
+    },
+    {
+      "name": "test",
+      "barcode_number": "241421412412",
+      "image_url": "",
+      "description": "",
+      "price": 44444,
+      "stock": 4,
+      "stockBefore": 4,
+      "id": 10
     }
   ],
   "users": [
