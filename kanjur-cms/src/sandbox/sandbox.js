@@ -1,3 +1,3 @@
-const array = [1,2,3,4]
+const array = '[{"ProductId":1, "quantity":3}]'
 
-console.log(JSON.parse(JSON.stringify(array)))
+console.log(JSON.parse(array))
