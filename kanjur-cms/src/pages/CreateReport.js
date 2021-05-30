@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Navbar from '../components/Navbar'
 import { editProduct } from '../store/action/ProductAction'
-import { fetchTransaction } from '../store/action/ReportAction'
+import { fetchTransaction, postReport } from '../store/action/ReportAction'
 
 function CreateReport() {
   const dispatch = useDispatch()
@@ -60,7 +60,13 @@ function CreateReport() {
   }
 
   function handleCreateReport(products, transactions, income, loss) {
-    console.log(products, transactions, income, loss)
+    const payload = {
+      products: JSON.stringify(products),
+      transactions: JSON.stringify(transactions),
+      income: income,
+      loss: loss
+    }
+    dispatch(postReport(payload))
   }
 
   return (

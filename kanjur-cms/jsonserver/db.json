@@ -3,67 +3,65 @@
     {
       "name": "Ultra mimi",
       "barcode_number": "8998009011696",
-      "image_url": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-2556645/ultra_ultra-mimi-full-cream-susu-uht--125-ml-_full04.jpg",
-      "description": "Susu Fullcream ultra 100ml",
       "price": 3500,
-      "stock": 5,
-      "stockBefore": 5,
+      "stock": 4,
+      "stockBefore": 4,
       "id": 1
     },
     {
       "name": "test",
       "barcode_number": "2421412412442",
       "price": 4321,
-      "stock": 2,
-      "stockBefore": 2,
+      "stock": 1,
+      "stockBefore": 1,
       "id": 2
     },
     {
       "name": "test",
       "barcode_number": "424124124124",
       "price": 24566,
-      "stock": 5,
-      "stockBefore": 5,
+      "stock": 4,
+      "stockBefore": 4,
       "id": 3
     },
     {
       "name": "test",
       "barcode_number": "4241421412",
       "price": 412,
-      "stock": 6,
-      "stockBefore": 6,
+      "stock": 5,
+      "stockBefore": 5,
       "id": 4
     },
     {
       "name": "rwqrwqfasfas",
       "barcode_number": "421421412412",
       "price": 421412,
-      "stock": 5,
-      "stockBefore": 5,
+      "stock": 4,
+      "stockBefore": 4,
       "id": 5
     },
     {
       "name": "421421421412",
       "barcode_number": "4214124124124",
       "price": 42141,
-      "stock": 4,
-      "stockBefore": 4,
+      "stock": 3,
+      "stockBefore": 3,
       "id": 6
     },
     {
       "name": "241421421412412",
       "barcode_number": "421421412412412",
       "price": 4124,
-      "stock": 6,
-      "stockBefore": 6,
+      "stock": 5,
+      "stockBefore": 5,
       "id": 8
     },
     {
       "name": "4214214124124214",
       "barcode_number": "12421412421412",
       "price": 42142,
-      "stock": 8,
-      "stockBefore": 8,
+      "stock": 7,
+      "stockBefore": 7,
       "id": 9
     }
   ],
@@ -90,5 +88,13 @@
       "OrderId": "OD101-12198"
     }
   ],
-  "reports": []
+  "reports": [
+    {
+      "products": "[{\"ProductId\":1,\"stockRecorded\":4,\"stockReal\":4,\"price\":3500},{\"ProductId\":2,\"stockRecorded\":1,\"stockReal\":1,\"price\":4321},{\"ProductId\":3,\"stockRecorded\":4,\"stockReal\":4,\"price\":24566},{\"ProductId\":4,\"stockRecorded\":5,\"stockReal\":5,\"price\":412},{\"ProductId\":5,\"stockRecorded\":4,\"stockReal\":4,\"price\":421412},{\"ProductId\":6,\"stockRecorded\":3,\"stockReal\":3,\"price\":42141},{\"ProductId\":8,\"stockRecorded\":5,\"stockReal\":5,\"price\":4124},{\"ProductId\":9,\"stockRecorded\":7,\"stockReal\":7,\"price\":42142}]",
+      "transactions": "[{\"id\":1,\"UserId\":1,\"Products\":\"[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]\",\"totalPrice\":10500,\"OrderId\":\"OD101-12197\"},{\"id\":2,\"UserId\":1,\"Products\":\"[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]\",\"totalPrice\":10500,\"OrderId\":\"OD101-12198\"}]",
+      "income": 21000,
+      "loss": 0,
+      "id": 1
+    }
+  ]
 }

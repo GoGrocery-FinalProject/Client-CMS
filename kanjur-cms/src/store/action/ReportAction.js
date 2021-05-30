@@ -46,10 +46,11 @@ export function postReport(payload) {
       url: '/reports',
       headers: {
         access_token: localStorage.access_token
-      }
+      },
+      data: payload
     })
       .then((response) => {
-        dispatch({ type: "GET_ALL_TRANSACTION", payload: response.data })
+        dispatch(fetchReport())
       })
       .catch((err) => {
         console.log(err)

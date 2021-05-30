@@ -38,51 +38,55 @@ function EditProductPage(props) {
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
-      <div id="addproduct-page" className="container" style={{ marginTop: '10%', width: "85vw" }}>
-        <h2>Edit product</h2>
+      <div id="addproduct-page" className="container" style={{ marginTop: '8vh', width: "85vw" }}>
         <form
           id="addform"
           onSubmit={(e) => {
             e.preventDefault()
             handleEditutton()
           }}
-          className="border border-2 container bg-light row"
+          className="card border-2 container bg-white"
           style={{ padding: '3rem' }}
         >
-          <div className="col-6">
-            <div className="mb-3">
-              <label className="form-label">Name</label>
-              <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Barcode Number</label>
-              <input value={barcode} onChange={(e) => setBarcode(e.target.value)} className="form-control" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Image Url</label>
-              <input value={image_url} onChange={(e) => setImage_url(e.target.value)} className="form-control" />
-            </div>
-            <div className="mb-3">
-              <label className="form-label">Description</label>
-              <input value={description} onChange={(e) => setDescription(e.target.value)} className="form-control" />
-            </div>
-            <div className="mb-3 row">
-              <div className="col-6">
-                <label className="form-label">Price</label>
-                <input value={price} onChange={(e) => setPrice(e.target.value)} type="number" className="form-control" />
+          <h2 className="card-header">Edit product</h2>
+          <div className="row" style={{marginTop: "5vh"}}>
+            <div className="col-6">
+              <div className="mb-3 row">
+                <div className="mb-3 col-6">
+                  <label className="form-label">Name</label>
+                  <input value={name} onChange={(e) => setName(e.target.value)} type="text" className="form-control" />
+                </div>
+                <div className="mb-3 col-6">
+                  <label className="form-label">Barcode Number</label>
+                  <input value={barcode} onChange={(e) => setBarcode(e.target.value)} className="form-control" />
+                </div>
               </div>
-              <div className="col-6">
-                <label className="form-label">Stock</label>
-                <input value={stock} onChange={(e) => setStock(e.target.value)} type="number" className="form-control" />
+              <div className="mb-3">
+                <label className="form-label">Image Url</label>
+                <input value={image_url} onChange={(e) => setImage_url(e.target.value)} className="form-control" />
               </div>
+              <div className="mb-3">
+                <label className="form-label">Description</label>
+                <input value={description} onChange={(e) => setDescription(e.target.value)} className="form-control" />
+              </div>
+              <div className="mb-3 row">
+                <div className="col-6">
+                  <label className="form-label">Price</label>
+                  <input value={price} onChange={(e) => setPrice(e.target.value)} type="number" className="form-control" />
+                </div>
+                <div className="col-6">
+                  <label className="form-label">Stock</label>
+                  <input value={stock} onChange={(e) => setStock(e.target.value)} type="number" className="form-control" />
+                </div>
+              </div>
+              <button type="submit" className="btn btn-primary" id="addtask-btn">
+                Edit Product
+              </button>
             </div>
-            <button type="submit" className="btn btn-primary" id="addtask-btn">
-              Edit Product
-            </button>
+            <div className="col-6">
+                <img alt="preview product" src={image_url} style={{ width: "100%" }}></img>
+            </div>
           </div>
-          <div className="col-6">
-              <img alt="preview product" src={image_url} style={{ width: "100%" }}></img>
-            </div>
         </form>
       </div>
     </div>

@@ -27,7 +27,7 @@ function HomePage() {
     <div style={{ display: "flex" }}>
       <Navbar />
       <div className="container" style={{ width: "85vw", marginTop: "5vh" }}>
-        <h2 class="card-header">Your Product List</h2>
+        <h2 className="card-header">Your Product List</h2>
         <div className="d-flex justify-content-between">
           <input
             className="form-control form-text"
@@ -51,7 +51,7 @@ function HomePage() {
             }}
           >Create Today's Report</button>
         </div>
-        <div className="card"  style={{height: "75vh"}}>
+        <div className="card" style={{height: "75vh"}}>
           <div className="container table-wrapper-scroll-y my-custom-scrollbar table-responsive">
             <table className="table table-hover table-nowrap"  style={{"tableLayout": "fixed", "overFlow": "breakWord"}}>
               <thead className="thead-light">
