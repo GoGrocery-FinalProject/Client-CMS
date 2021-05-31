@@ -13,6 +13,8 @@ function ListProduct(props) {
       stock: newStock, 
       stockBefore: newStock, 
       barcode: props.product.barcode_number,
+      image_url: props.product.image_url,
+      description: props.product.description,
       price: props.product.price
     }
     dispatch(editProduct(props.product.id, payload))
@@ -33,40 +35,42 @@ function ListProduct(props) {
   return (
       <tbody>
       <tr>
-        <td>{ props.product.name }</td>
-        <td>{ props.product.barcode_number }</td>
-        <td>
+        <td className="text-heading font-semibold">{ props.product.id }</td>
+        <td className="text-heading font-semibold">{ props.product.name }</td>
+        <td><img alt="product-img" src={ props.product.image_url } width="100px"></img></td>
+        <td className="text-heading font-semibold">{ props.product.barcode_number }</td>
+        <td className="text-heading font-semibold">
           <button 
             className="btn btn-outline-danger" 
-            style={{"width":"20%"}}
+            style={{"width":"30%"}}
             onClick={e => {
               e.preventDefault()
               handlePatchStock(props.product.stock-1)
             }}
           >-</button>
-          { props.product.stock }
+          &nbsp;{ props.product.stock }&nbsp;
           <button 
             className="btn btn-outline-success" 
-            style={{"width":"20%"}}
+            style={{"width":"30%"}}
             onClick={e => {
               e.preventDefault()
               handlePatchStock(props.product.stock+1)
             }}
           >+</button>
         </td>
-        <td>{ props.product.price }</td>
+        <td className="text-heading font-semibold">{ props.product.price }</td>
         <td>
           <button 
             className="btn btn-outline-success" 
-            style={{"width":"50%"}}
+            style={{"width":"80%"}}
             onClick={e => {
               e.preventDefault()
               handleEdit()
             }}
-          >Edit</button>
+          >Edit</button><br></br>
           <button 
             className="btn btn-outline-danger" 
-            style={{"width":"50%"}}
+            style={{"width":"80%"}}
             onClick={e => {
               e.preventDefault()
               handleDelete()

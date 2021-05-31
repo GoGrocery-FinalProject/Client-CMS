@@ -13,14 +13,16 @@ function Navbar() {
   }
   return (
     <div className="sidebar">
-      <div className="section">
-        <div className="item">Dashboard</div>
-        <Link to="/"><div className="item btn">Product List</div></Link>
-        <Link to="/add"><div className="item btn">Add new Product</div></Link>
-        <Link to="/report"><div className="item btn">Create Daily Report</div></Link>
-        <Link to="/transaction"><div className="item btn">Transaction</div></Link>
+      <div className="section navbar-nav mx-auto">
+        <br></br><div className="item btn" style={{width:"100%"}}>Dashboard</div><br></br>
+        <hr></hr>
+        <Link to="/"><div className="nav-item item btn" style={{width:"100%"}}>Product List</div></Link>
+        <Link to="/add"><div className="nav-item item btn" style={{width:"100%"}}>Add new Product</div></Link>
+        <Link to="/create-report"><div className="nav-item item btn" style={{width:"100%"}}>Create Daily Report</div></Link>
+        <Link to="/report"><div className="nav-item item btn" style={{width:"100%"}}>Report</div></Link>
+        <Link to="/transaction"><div className="nav-item item btn" style={{width:"100%"}}>Transaction</div></Link>
       </div>
-        <div className="section">
+        <div className="section navbar-nav mx-auto">
           <button className="item btn" onClick={(e) => {
             e.preventDefault()
             handleLogoutButton()
