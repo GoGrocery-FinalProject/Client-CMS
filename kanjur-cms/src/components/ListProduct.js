@@ -28,7 +28,6 @@ function ListProduct(props) {
   }
 
   function handleDelete() {
-    console.log('delete')
     dispatch(deleteProduct(props.product.id))
   }
 

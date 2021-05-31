@@ -62,7 +62,7 @@ function HomePage() {
               className="btn btn-warning"
               onClick={(e) => {
                 e.preventDefault()
-                handleAddProduct()
+                handleReport()
               }}
             >Create Report</button>
           </div>

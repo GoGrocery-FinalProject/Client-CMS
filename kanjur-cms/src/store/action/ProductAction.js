@@ -1,11 +1,29 @@
 import axios from 'axios'
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'https://kanjur-test.herokuapp.com'
 })
 
-export function login() {
+export function login(email, password) {
   return function (dispatch) {
-    dispatch({ type: "LOGIN", payload: { name: 'a' } })
+    axiosInstance({
+      method: 'POST',
+      url: '/login',
+      data: {
+        email,
+        password
+      }
+    })
+      .then((response) => {
+        console.log(response.data)
+        localStorage.setItem("access_token", response.data.token)
+        dispatch({ type: "LOGIN", payload: response.data })
+      })
+  }
+}
+
+export function authenticated() {
+  return function (dispatch) {
+    dispatch({ type: "AUTHENTICATED" })
   }
 }
 
@@ -26,7 +44,7 @@ export function fetchProduct() {
       method: 'GET',
       url: '/products',
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       }
     })
       .then((response) => {
@@ -49,7 +67,7 @@ export function fetchProductById(id) {
       method: 'GET',
       url: `/products/${id}`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       }
     })
       .then((response) => {
@@ -68,7 +86,7 @@ export function addProduct(payload) {
       method: 'POST',
       url: `/products/`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
       data: {
         name: payload.name,
@@ -91,12 +109,11 @@ export function addProduct(payload) {
 
 export function editProduct(id, payload) {
   return function (dispatch) {
-    // console.log(payload, id)
     axiosInstance({
       method: 'PUT',
       url: `/products/${id}`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
       data: {
         name: payload.name,
@@ -124,7 +141,7 @@ export function patchStockProduct(id, payload) {
       method: 'PATCH',
       url: `/products/${id}`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
       data: {
         stock: +payload.stock
@@ -146,7 +163,7 @@ export function deleteProduct(id) {
       method: 'DELETE',
       url: `/products/${id}`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
     })
       .then((response) => {

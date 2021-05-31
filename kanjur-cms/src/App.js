@@ -19,13 +19,13 @@ import GuardedRoute from './components/GuarderRoute'
 import CreateReport from './pages/CreateReport'
 import Report from './pages/ReportPage'
 
-import { login } from './store/action/ProductAction'
+import { authenticated } from './store/action/ProductAction'
 
 function App() {
   const isAuthenticated = (store.getState().isAuthenticated)
   useEffect(() => {
     if(localStorage.access_token){
-      store.dispatch(login())
+      store.dispatch(authenticated())
     }
   }, [])
   return (
