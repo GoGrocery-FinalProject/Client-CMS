@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchReport } from '../store/action/ReportAction'
 
 function Report() {
   const reports = useSelector(state => state.reports)
+  const [filterDate, setFilterDate] = useState("")
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -18,6 +19,13 @@ function Report() {
       <div className="row container" style={{ width: "85vw", marginTop: "5vh" }}>
         <div className="col-12 card container table-wrapper-scroll-y my-custom-scrollbar table-responsive" style={{ height: "90vh" }}>
           <h2 style={{ marginTop: "3vh" }}>Report Record</h2>
+          <div className="col-6">
+              <input 
+                type="date" 
+                className="form-control" 
+                value={filterDate} 
+                onChange={(e) => setFilterDate((e.target.value).slice(0,10))}></input>
+            </div>
           <table className="table table-hover table-nowrap">
             <thead className="thead-light">
               <tr>
@@ -31,25 +39,30 @@ function Report() {
             </thead>
             <tbody >
               {
-                reports.map(el => {
+                reports.filter((e) => {
+                  if(filterDate === ""){
+                    return e
+                  } else {
+                    return e.createdAt.slice(0,10) === filterDate
+                  }
+                }).map(el => {
                   return (
-
                     <tr key={el.id}>
                       <td className="text-heading font-semibold">{el.id}</td>
                       <td className="text-heading font-semibold">
                         {
                           JSON.parse(el.transactions).map(transaction => {
                             return (
-                              <p>id:{transaction.id}, OrderId: {transaction.OrderId} </p>
+                              <p key={transaction.id}>id:{transaction.id}, OrderId: {transaction.order_id} </p>
                             )
                           })
                         }
                       </td>
                       <td className="text-heading font-semibold">
                         {
-                          JSON.parse(el.products).map(product => {
+                          JSON.parse(el.products).map((product) => {
                             return (
-                              <p>Id:{product.ProductId}
+                              <p key={product.ProductId}>Id:{product.ProductId}
                                - StockRecorded:{product.stockRecorded}
                                - StockReal:{product.stockReal}
                                - DiffStock:{product.stockRecorded - product.stockReal}
@@ -60,7 +73,7 @@ function Report() {
                       </td>
                       <td className="text-heading font-semibold">{el.income}</td>
                       <td className="text-heading font-semibold">{el.loss}</td>
-                      <td className="text-heading font-semibold">29/05/2021</td>
+                      <td className="text-heading font-semibold">{el.createdAt.slice(0,10)}</td>
                     </tr>
                   )
                 })

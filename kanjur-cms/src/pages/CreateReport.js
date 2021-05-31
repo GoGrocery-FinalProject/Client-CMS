@@ -3,9 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import Navbar from '../components/Navbar'
 import { editProduct } from '../store/action/ProductAction'
 import { fetchTransaction, postReport } from '../store/action/ReportAction'
+import { useHistory } from 'react-router-dom'
 
 function CreateReport() {
   const dispatch = useDispatch()
+  const history = useHistory()
   const products = useSelector(state => state.products)
   const transaction = useSelector(state => state.transactions)
   const [filter, setFilter] = useState("")
@@ -70,6 +72,7 @@ function CreateReport() {
       loss: loss
     }
     dispatch(postReport(payload))
+    history.push('/report')
   }
 
   return (

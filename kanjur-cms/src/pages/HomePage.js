@@ -21,7 +21,7 @@ function HomePage() {
   }
 
   function handleReport() {
-    history.push('/report')
+    history.push('/create-report')
   }
 
   return (
