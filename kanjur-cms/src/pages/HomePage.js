@@ -9,7 +9,8 @@ function HomePage() {
   const history = useHistory()
   const products = useSelector(state => state.products)
   const dispatch = useDispatch()
-  const [filter, setFilter] = useState('')
+  const [filterName, setFilterName] = useState('')
+  const [filterId, setFilterId] = useState('')
 
   useEffect(() => {
     dispatch(fetchProduct())
@@ -27,29 +28,45 @@ function HomePage() {
     <div style={{ display: "flex" }}>
       <Navbar />
       <div className="container" style={{ width: "85vw", marginTop: "5vh" }}>
-        <h2 className="card-header">Your Product List</h2>
-        <div className="d-flex justify-content-between">
-          <input
-            className="form-control form-text"
-            type="text"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            placeholder="Filter by Name Here">
-          </input>
-          <button
-            className="btn btn-light"
-            onClick={(e) => {
-              e.preventDefault()
-              handleAddProduct()
-            }}
-          >Add new Product</button>
-          <button
-            className="btn btn-warning"
-            onClick={(e) => {
-              e.preventDefault()
-              handleReport()
-            }}
-          >Create Today's Report</button>
+        <h2 className="card-header">Product List</h2>
+        <div className="d-flex justify-content-between row">
+          <div className="col-2">
+            <input
+              className="form-control form-text"
+              type="number"
+              value={filterId}
+              onChange={(e) => setFilterId(e.target.value)}
+              placeholder="Filter by Id Here">
+            </input>
+          </div>
+          <div className="col-6">
+            <input
+              className="form-control form-text"
+              type="text"
+              value={filterName}
+              onChange={(e) => setFilterName(e.target.value)}
+              placeholder="Filter by Name Here">
+            </input>
+          </div>
+          <div className="col-2">
+            <button
+              className="btn btn-light"
+              onClick={(e) => {
+                e.preventDefault()
+                handleAddProduct()
+              }}
+            >Add Product</button>
+          </div>
+          <div className="col-2">
+            <button
+              className="btn btn-warning"
+              onClick={(e) => {
+                e.preventDefault()
+                handleAddProduct()
+              }}
+            >Create Report</button>
+          </div>
+          
         </div>
         <div className="card" style={{height: "75vh"}}>
           <div className="container table-wrapper-scroll-y my-custom-scrollbar table-responsive">
@@ -70,7 +87,11 @@ function HomePage() {
           */}
               {
                 products.filter(item => {
-                  return item.name.toLowerCase().includes(filter.toLocaleLowerCase())
+                  if(filterId === "") {
+                    return item.name.toLowerCase().includes(filterName.toLocaleLowerCase())
+                  } else {
+                    return +item.id === +filterId
+                  }
                 }).map(el => {
                   return (
                     <ListProduct

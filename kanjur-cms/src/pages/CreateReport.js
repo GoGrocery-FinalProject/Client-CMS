@@ -8,6 +8,7 @@ function CreateReport() {
   const dispatch = useDispatch()
   const products = useSelector(state => state.products)
   const transaction = useSelector(state => state.transactions)
+  const [filter, setFilter] = useState("")
 
   useEffect(() => {
     dispatch(fetchTransaction())
@@ -74,9 +75,16 @@ function CreateReport() {
   return (
     <div style={{ display: "flex"}}>
     <Navbar/>
-    <div className="row card container" style={{width: "85vw", marginTop: "5vh"}}>
+    <div className="row card container" style={{width: "85vw", marginTop: "5vh", height: "90vh"}}>
       <h2 className="card-header">Create Daily Product Report</h2>
-      <div className="card col-12 table-wrapper-scroll-y table-responsive my-custom-scrollbar" style={{height: "75vh"}}>
+          <input
+            className="form-control form-text"
+            type="text"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            placeholder="Filter by Name Here">
+          </input>
+      <div className="card col-12 table-wrapper-scroll-y table-responsive my-custom-scrollbar" style={{height: "70vh"}}>
         <table className="table table-hover table-nowrap" >
           <thead className="thead-light">
             <tr>
@@ -91,7 +99,9 @@ function CreateReport() {
             </tr>
           </thead>
           {
-            products.map((el, i) => {
+            products.filter(item => {
+                return item.name.toLowerCase().includes(filter.toLocaleLowerCase())
+            }).map((el, i) => {
               return (
                 <tbody key={el.id}>
                 <tr>
@@ -125,7 +135,7 @@ function CreateReport() {
         </table>
       </div>
         <button
-          className="btn btn-dark"
+          className="btn btn-warning btn-block mb-4"
           onClick={(e)=>{
             e.preventDefault()
             handleCreateReport(report, transaction, getDailyIncome(transaction), getDailyLosses(report))

@@ -15,6 +15,7 @@ function Navbar() {
     <div className="sidebar">
       <div className="section navbar-nav mx-auto">
         <br></br><div className="item btn" style={{width:"100%"}}>Dashboard</div><br></br>
+        <hr></hr>
         <Link to="/"><div className="nav-item item btn" style={{width:"100%"}}>Product List</div></Link>
         <Link to="/add"><div className="nav-item item btn" style={{width:"100%"}}>Add new Product</div></Link>
         <Link to="/create-report"><div className="nav-item item btn" style={{width:"100%"}}>Create Daily Report</div></Link>

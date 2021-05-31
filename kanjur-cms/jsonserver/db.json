@@ -1,80 +1,54 @@
 {
   "products": [
     {
-      "name": "Ultra mimi",
+      "name": "Ultra mimi Fullcream",
       "barcode_number": "8998009011696",
       "image_url": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-2556645/ultra_ultra-mimi-full-cream-susu-uht--125-ml-_full04.jpg",
       "description": "susu fullcream 100ml",
       "price": 3500,
-      "stock": 3,
-      "stockBefore": 3,
+      "stock": 8,
+      "stockBefore": 8,
       "id": 1
     },
     {
-      "name": "test",
-      "barcode_number": "2421412412442",
-      "price": 4321,
-      "stock": 1,
-      "stockBefore": 1,
+      "name": "Mix Nut Dua Kelinci",
+      "barcode_number": "8995077603679",
+      "image_url": "https://cf.shopee.co.id/file/957d96b90eaa9d184fd8793d1e362925",
+      "description": "Kaang campur 150gr",
+      "price": 25000,
+      "stock": 6,
+      "stockBefore": 6,
       "id": 2
     },
     {
-      "name": "test",
-      "barcode_number": "424124124124",
-      "price": 24566,
-      "stock": 4,
+      "name": "Cleo Mineral Water 600ml",
+      "barcode_number": "8996129804099",
+      "image_url": "https://s1.bukalapak.com/img/66029142702/large/2020_04_17T15_40_37_07_00.jpg",
+      "description": "https://s1.bukalapak.com/img/66029142702/large/2020_04_17T15_40_37_07_00.jpg",
+      "price": 3000,
+      "stock": 15,
       "stockBefore": 4,
       "id": 3
     },
     {
-      "name": "test",
-      "barcode_number": "4241421412",
-      "price": 412,
-      "stock": 5,
+      "name": "Chitato 40gr",
+      "barcode_number": "89686598476",
+      "image_url": "https://cf.shopee.co.id/file/0cae4d70eae1c63ea95f6f8d77d5bdd4",
+      "description": "CHITATO PTO CHIPS 35G CHICKEN BBQ",
+      "price": 8500,
+      "stock": 8,
       "stockBefore": 5,
       "id": 4
     },
     {
-      "name": "rwqrwqfasfas",
-      "barcode_number": "421421412412",
-      "price": 421412,
-      "stock": 4,
+      "name": "Indome Goreng 1 pcs",
+      "barcode_number": "818201988924",
+      "image_url": "https://images.tokopedia.net/img/cache/700/product-1/2020/2/19/47871595/47871595_b6aa9df0-846b-4846-95d1-940248340634_1000_1000",
+      "description": "Indomie Instant Fried Noodles",
+      "price": 2500,
+      "stock": 20,
       "stockBefore": 4,
       "id": 5
-    },
-    {
-      "name": "421421421412",
-      "barcode_number": "4214124124124",
-      "price": 42141,
-      "stock": 3,
-      "stockBefore": 3,
-      "id": 6
-    },
-    {
-      "name": "241421421412412",
-      "barcode_number": "421421412412412",
-      "price": 4124,
-      "stock": 5,
-      "stockBefore": 5,
-      "id": 8
-    },
-    {
-      "name": "4214214124124214",
-      "barcode_number": "12421412421412",
-      "price": 42142,
-      "stock": 7,
-      "stockBefore": 7,
-      "id": 9
-    },
-    {
-      "name": "test",
-      "barcode_number": "241421412412",
-      "image_url": "",
-      "description": "",
-      "price": 44444,
-      "stock": 4,
-      "stockBefore": 4,
-      "id": 10
     }
   ],
   "users": [
@@ -102,7 +76,7 @@
   ],
   "reports": [
     {
-      "products": "[{\"ProductId\":1,\"stockRecorded\":4,\"stockReal\":4,\"price\":3500},{\"ProductId\":2,\"stockRecorded\":1,\"stockReal\":1,\"price\":4321},{\"ProductId\":3,\"stockRecorded\":4,\"stockReal\":4,\"price\":24566},{\"ProductId\":4,\"stockRecorded\":5,\"stockReal\":5,\"price\":412},{\"ProductId\":5,\"stockRecorded\":4,\"stockReal\":4,\"price\":421412},{\"ProductId\":6,\"stockRecorded\":3,\"stockReal\":3,\"price\":42141},{\"ProductId\":8,\"stockRecorded\":5,\"stockReal\":5,\"price\":4124},{\"ProductId\":9,\"stockRecorded\":7,\"stockReal\":7,\"price\":42142}]",
+      "products": "[{\"ProductId\":1,\"stockRecorded\":4,\"stockReal\":4,\"price\":3500},{\"ProductId\":2,\"stockRecorded\":1,\"stockReal\":1,\"price\":4321},{\"ProductId\":3,\"stockRecorded\":4,\"stockReal\":4,\"price\":24566},{\"ProductId\":4,\"stockRecorded\":5,\"stockReal\":5,\"price\":412},{\"ProductId\":5,\"stockRecorded\":4,\"stockReal\":4,\"price\":421412}]",
       "transactions": "[{\"id\":1,\"UserId\":1,\"Products\":\"[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]\",\"totalPrice\":10500,\"OrderId\":\"OD101-12197\"},{\"id\":2,\"UserId\":1,\"Products\":\"[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]\",\"totalPrice\":10500,\"OrderId\":\"OD101-12198\"}]",
       "income": 21000,
       "loss": 0,

@@ -25,10 +25,10 @@ function Login({auth}) {
       <div className="col-md-5 border bg-white">
         <div className="login d-flex align-items-center py-5">
           <div className="container">
-            <h1 style={{textAlign: 'center'}}>Welcome To Kanjur CMS</h1>
+            <h1 style={{textAlign: 'center', marginTop: '10%'}}>Welcome To Kanjur CMS</h1>
             <div className="row">
               <div className="col-lg-10 col-xl-7 mx-auto">
-                <h3 className="display-4">Login</h3>
+                <h4 className="display-4">Login</h4>
                 <form 
                   onSubmit={(event) => {
                   event.preventDefault()
