@@ -72,7 +72,7 @@ function TransactionPage() {
                       <td className="text-heading font-semibold">
                         {
                           JSON.parse(el.products).map((product, i) => {
-                            return (<p key={i}>ProductId: {product.ProductId}   Quantity: {product.quantity}</p>)
+                            return (<p key={i}>id: {product.id}, name: {product.name}   Quantity: {product.quantity}</p>)
                           })
                         } 
                       </td>
