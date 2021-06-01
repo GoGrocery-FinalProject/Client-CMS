@@ -84,7 +84,11 @@ function AddProductPage() {
               </button>
             </div>
             <div className="col-6">
-              <img alt="preview product" src={image_url} style={{width: "100%"}}></img>
+              {
+                image_url === "" ? 
+                <img alt="no found" src={"https://www.keepsakestudio.in/wp-content/uploads/2015/11/no-image.jpg"} style={{ maxWidth: "20vw",  display: "block", marginLeft: "auto", marginRight: "auto"}}></img> :
+                <img alt="preview product" src={image_url} style={{ maxWidth: "20vw",  display: "block", marginLeft: "auto", marginRight: "auto"}}></img>
+              }
             </div>
           </div>
         </form>
