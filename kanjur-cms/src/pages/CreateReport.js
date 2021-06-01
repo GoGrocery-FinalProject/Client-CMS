@@ -65,9 +65,13 @@ function CreateReport() {
   }
 
   function handleCreateReport(products, transactions, income, loss) {
+    const today = new Date()
+    const today_transaction = transactions.filter(el => {
+      return el.createdAt.slice(0,10) === today.toISOString().slice(0,10)
+    })
     const payload = {
       products: JSON.stringify(products),
-      transactions: JSON.stringify(transactions),
+      transactions: JSON.stringify(today_transaction),
       income: income,
       loss: loss
     }
@@ -78,20 +82,21 @@ function CreateReport() {
   return (
     <div style={{ display: "flex"}}>
     <Navbar/>
-    <div className="row card container" style={{width: "85vw", marginTop: "5vh", height: "90vh"}}>
+    <div className="row card container" style={{width: "85vw", marginTop: "5vh", height: "88vh"}}>
       <h2 className="card-header">Create Daily Product Report</h2>
-          <input
-            className="form-control form-text"
-            type="text"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            placeholder="Filter by Name Here">
-          </input>
-      <div className="card col-12 table-wrapper-scroll-y table-responsive my-custom-scrollbar" style={{height: "70vh"}}>
+      <input
+        className="form-control form-text"
+        style={{marginTop: "2vh"}}
+        type="text"
+        value={filter}
+        onChange={(e) => setFilter(e.target.value)}
+        placeholder="Filter by Name Here">
+      </input>
+      <div className="card col-12 table-wrapper-scroll-y table-responsive my-custom-scrollbar" style={{height: "65vh"}}>
         <table className="table table-hover table-nowrap" >
           <thead className="thead-light">
             <tr>
-              <th className="col-1">Id</th>
+              <th className="col">Id</th>
               <th className="col-2">Name</th>
               <th className="col-2">Img Preview</th>
               <th className="col-2">Barcode Number</th>

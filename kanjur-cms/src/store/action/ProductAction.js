@@ -143,13 +143,6 @@ export function editProduct(id, payload) {
       }
     })
       .then((response) => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: `Item ${payload.name} has been updated`,
-          showConfirmButton: false,
-          timer: 1500
-        })
         dispatch(fetchProduct())
       })
       .catch((err) => {

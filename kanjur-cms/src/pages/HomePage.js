@@ -28,8 +28,8 @@ function HomePage() {
     <div style={{ display: "flex" }}>
       <Navbar />
       <div className="container card" style={{ width: "85vw", marginTop: "3vh", height:"95vh" }}>
-        <h2 className="card-header">Product List</h2>
-        <div className="d-flex justify-content-between row">
+        <h2 className="card-header" style={{marginTop: "1vh"}}>Product List</h2>
+        <div className="d-flex justify-content-between row" style={{ marginTop:"3vh"}}>
           <div className="col-2">
             <input
               className="form-control form-text"
@@ -70,20 +70,19 @@ function HomePage() {
               }}
             >Create Report</button>
           </div>
-          
         </div>
-        <div className="card" style={{height: "75vh"}}>
+        <div className="card" style={{height: "75vh", marginTop:"3vh"}}>
           <div className="container table-wrapper-scroll-y my-custom-scrollbar table-responsive">
             <table className="table table-hover table-nowrap"  style={{"tableLayout": "fixed", "overFlow": "breakWord"}}>
               <thead className="thead-light">
                 <tr>
-                  <th className="col-1">Id</th>
-                  <th className="col-2">Name</th>
-                  <th className="col-2">Img Preview</th>
-                  <th className="col-2">Barcode Number</th>
-                  <th className="col-2">Stock</th>
-                  <th className="col-1">Price</th>
-                  <th className="col-2">Action</th>
+                  <th className="" style={{width:"5em"}}>Id</th>
+                  <th className="col-4" >Name</th>
+                  <th className="col-2" style={{textAlign: "center", color:""}}>Image</th>
+                  <th className="col-3" style={{textAlign: "center"}}>Barcode Number</th>
+                  <th className="col-1" style={{textAlign: "center"}}>Stock</th>
+                  <th className="col-1" style={{textAlign: "center"}}>Price</th>
+                  <th className="col-2" style={{textAlign: "center"}}>Action</th>
                 </tr>
               </thead>
               {
