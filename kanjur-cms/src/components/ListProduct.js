@@ -1,4 +1,5 @@
 import React from 'react'
+import Swal from 'sweetalert2'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux' 
 import { deleteProduct, editProduct } from '../store/action/ProductAction'
@@ -28,7 +29,19 @@ function ListProduct(props) {
   }
 
   function handleDelete() {
-    dispatch(deleteProduct(props.product.id))
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteProduct(props.product.id))
+      }
+    })
   }
 
   return (

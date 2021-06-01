@@ -1,4 +1,4 @@
-export default function validateInput(name, barcode, stock, price) {
+export default function validateInput(name, barcode, stock, price, image_url, description) {
   let message = []
 
   if (!name) {
@@ -6,6 +6,12 @@ export default function validateInput(name, barcode, stock, price) {
   }
   if (!barcode) {
     message.push('barcode must be filled')
+  }
+  if (!image_url) {
+    message.push('image_url must be filled')
+  }
+  if (!description) {
+    message.push('description must be filled')
   }
   if (!stock || stock < 1) {
     message.push('stock must be greater than 0')

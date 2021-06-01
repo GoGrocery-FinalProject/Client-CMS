@@ -27,13 +27,14 @@ function HomePage() {
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
-      <div className="container" style={{ width: "85vw", marginTop: "5vh" }}>
+      <div className="container card" style={{ width: "85vw", marginTop: "3vh", height:"95vh" }}>
         <h2 className="card-header">Product List</h2>
         <div className="d-flex justify-content-between row">
           <div className="col-2">
             <input
               className="form-control form-text"
               type="number"
+              style={{width:"100%"}}
               value={filterId}
               onChange={(e) => setFilterId(e.target.value)}
               placeholder="Filter by Id Here">
@@ -43,6 +44,7 @@ function HomePage() {
             <input
               className="form-control form-text"
               type="text"
+              style={{width:"100%"}}
               value={filterName}
               onChange={(e) => setFilterName(e.target.value)}
               placeholder="Filter by Name Here">
@@ -50,7 +52,8 @@ function HomePage() {
           </div>
           <div className="col-2">
             <button
-              className="btn btn-light"
+              className="btn btn-secondary"
+              style={{width:"100%"}}
               onClick={(e) => {
                 e.preventDefault()
                 handleAddProduct()
@@ -60,6 +63,7 @@ function HomePage() {
           <div className="col-2">
             <button
               className="btn btn-warning"
+              style={{width:"100%"}}
               onClick={(e) => {
                 e.preventDefault()
                 handleReport()
@@ -82,9 +86,6 @@ function HomePage() {
                   <th className="col-2">Action</th>
                 </tr>
               </thead>
-              {/**
-           * nanti looping pake map buat list product
-          */}
               {
                 products.filter(item => {
                   if(filterId === "") {
@@ -92,7 +93,7 @@ function HomePage() {
                   } else {
                     return +item.id === +filterId
                   }
-                }).map(el => {
+                }).sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map(el => {
                   return (
                     <ListProduct
                       key={el.id}
@@ -101,7 +102,6 @@ function HomePage() {
                   )
                 })
               }
-
             </table>
           </div>
           <div className="container col-4">
