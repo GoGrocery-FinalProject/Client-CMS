@@ -65,9 +65,13 @@ function CreateReport() {
   }
 
   function handleCreateReport(products, transactions, income, loss) {
+    const today = new Date()
+    const today_transaction = transactions.filter(el => {
+      return el.createdAt.slice(0,10) === today.toISOString().slice(0,10)
+    })
     const payload = {
       products: JSON.stringify(products),
-      transactions: JSON.stringify(transactions),
+      transactions: JSON.stringify(today_transaction),
       income: income,
       loss: loss
     }
