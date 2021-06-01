@@ -18,7 +18,7 @@ function CreateReport() {
 
 
   let ArrayReport = []
-  products.forEach(el => {
+  products.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).forEach(el => {
     ArrayReport.push({
       ProductId: el.id,
       stockRecorded: el.stock,
