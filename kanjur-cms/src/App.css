@@ -49,7 +49,7 @@ body {
   height: 100vh;
   width: 15vw;
   font-family:raleway;
-  background: #236f92;
+  background-image: linear-gradient(30deg , #0068bd, #44a7fd);
   display:flex;
   flex-direction: column;
   justify-content: space-between;

@@ -4,6 +4,7 @@ import {
   Link
 } from 'react-router-dom'
 import { logout } from '../store/action/ProductAction'
+import logo from '../assets/logo.png'
 
 function Navbar() {
   const dispatch = useDispatch()
@@ -14,7 +15,13 @@ function Navbar() {
   return (
     <div className="sidebar">
       <div className="section navbar-nav mx-auto">
-        <br></br><div className="item btn" style={{width:"100%"}}>Dashboard</div><br></br>
+        <div className="card" style={{marginTop:"3vh"}}>
+          <img 
+            style={{width:"100%", alignContent:"center", justifyContent:"center"}}
+            alt="logo app"
+            src={logo}>
+          </img>
+        </div>
         <hr></hr>
         <Link to="/"><div className="nav-item item btn" style={{width:"100%"}}>Product List</div></Link>
         <Link to="/add"><div className="nav-item item btn" style={{width:"100%"}}>Add new Product</div></Link>
@@ -23,7 +30,7 @@ function Navbar() {
         <Link to="/transaction"><div className="nav-item item btn" style={{width:"100%"}}>Transaction</div></Link>
       </div>
         <div className="section navbar-nav mx-auto">
-          <button className="item btn" onClick={(e) => {
+          <button className="nav-item item btn" onClick={(e) => {
             e.preventDefault()
             handleLogoutButton()
           }}>Logout</button>

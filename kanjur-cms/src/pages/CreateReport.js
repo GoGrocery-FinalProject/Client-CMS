@@ -104,7 +104,7 @@ function CreateReport() {
           {
             products.filter(item => {
                 return item.name.toLowerCase().includes(filter.toLocaleLowerCase())
-            }).map((el, i) => {
+            }).sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map((el, i) => {
               return (
                 <tbody key={el.id}>
                 <tr>
