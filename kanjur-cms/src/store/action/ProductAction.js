@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 const axiosInstance = axios.create({
-  baseURL: 'https://kanjur-test.herokuapp.com'
+  baseURL: 'http://54.151.182.9:3000'
 })
 
 export function login(email, password) {
