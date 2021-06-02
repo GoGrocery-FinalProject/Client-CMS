@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import rupiahFormater from '../helpers/rupiahForamat'
 
 function ListProduct(props) {
   const history = useHistory()
@@ -19,7 +20,7 @@ function ListProduct(props) {
         <td align="center"><img alt="product-img" style={{justifyContent:"center", alignItems:"center"}} src={ props.product.image_url } width="100px"></img></td>
         <td align="center" className="text-heading font-semibold">{ props.product.barcode_number }</td>
         <td align="center" className="text-heading font-semibold">{ props.product.stock }</td>
-        <td align="center" className="text-heading font-semibold">{ props.product.price }</td>
+        <td align="center" className="text-heading font-semibold">{ rupiahFormater(props.product.price) }</td>
         <td align="center">
           <button 
             className="btn btn-outline-success" 
