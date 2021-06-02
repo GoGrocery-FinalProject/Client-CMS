@@ -56,7 +56,7 @@ function EditProductPage(props) {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(deleteProduct(props.product.id))
+        dispatch(deleteProduct(data.id))
       }
     })
   }
