@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchTransaction } from '../store/action/ReportAction'
+import { useParams } from 'react-router-dom'
+import rupiahFormater from '../helpers/rupiahForamat'
+import { masa } from 'masa'
 
 function TransactionPage() {
+  let { order_id } = useParams()
   const transaction = useSelector(state => state.transactions)
   const [filterDate, setFilterDate] = useState("")
-  const [filterOrderId, setFilterOrderId] = useState("")
+  const [filterOrderId, setFilterOrderId] = useState(order_id)
   const dispatch = useDispatch()
+
+
   useEffect(() => {
     dispatch(fetchTransaction())
   }, [dispatch])
   
-  // if(transaction){
-  //   transaction.forEach(el => {
-  //     console.log((JSON.parse(el.products)))
-  //   })
-  // }
-
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
@@ -45,11 +45,11 @@ function TransactionPage() {
             <table className="table">
               <thead className="thead-light">
                 <tr>
-                  <th className="col-1" scope="col">UserId</th>
-                  <th className="col-4" scope="col">Products</th>
-                  <th className="col-2" scope="col">TotalPrice</th>
-                  <th className="col-2" scope="col">OrderId</th>
-                  <th className="col-2" scope="col">Transaction Date</th>
+                  <th className="col-1 text-heading font-semibold" style={{fontSize: 15}} scope="col">UserId</th>
+                  <th className="col-4 text-heading font-semibold" style={{fontSize: 15, textAlign: "center"}} scope="col">Products</th>
+                  <th className="col-2 text-heading font-semibold" style={{fontSize: 15, textAlign: "center"}} scope="col">TotalPrice</th>
+                  <th className="col-2 text-heading font-semibold" style={{fontSize: 15, textAlign: "center"}} scope="col">OrderId</th>
+                  <th className="col-2 text-heading font-semibold" style={{fontSize: 15, textAlign: "center"}} scope="col">Transaction Date</th>
                 </tr>
               </thead>
 
@@ -72,15 +72,27 @@ function TransactionPage() {
                       <tr key={el.id}>
                         <td className="text-heading font-semibold">{el.UserId}</td>
                         <td className="text-heading font-semibold">
+                          <table className="table table-hover table-nowrap">
+                            <thead>
+                              <th className="col-1 text-heading font-semibold">id</th>
+                              <th className="col-3 text-heading font-semibold">name</th>
+                              <th className="col-1 text-heading font-semibold">quantity</th>
+                            </thead>
                           {
                             JSON.parse(el.products).map((product, i) => {
-                              return (<p key={i}>id: {product.id}, name: {product.name}   Quantity: {product.quantity}</p>)
+                              return (
+                                <tbody  key={i}>
+                                  <td className="col-1 text-heading font-semibold">{product.id}</td>
+                                  <td className="col-3 text-heading font-semibold">{product.name}</td>
+                                  <td className="col-1 text-heading font-semibold">{product.quantity} pcs</td>
+                                </tbody>)
                             })
                           } 
+                          </table>
                         </td>
-                        <td className="text-heading font-semibold">{el.totalPrice}</td>
+                        <td className="text-heading font-semibold" style={{textAlign: "center"}}>{rupiahFormater(el.totalPrice)}</td>
                         <td className="text-heading font-semibold">{el.order_id}</td>
-                        <td className="text-heading font-semibold">{el.createdAt.slice(0,10)}</td>
+                        <td className="text-heading font-semibold">{masa(el.createdAt).format('dddd, D MMMM YYYY, HH:mm:ss')}</td>
                       </tr>
                     )
                   })

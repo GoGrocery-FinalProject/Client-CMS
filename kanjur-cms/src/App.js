@@ -18,6 +18,7 @@ import TransactionPage from './pages/TransactionPage';
 import GuardedRoute from './components/GuarderRoute'
 import CreateReport from './pages/CreateReport'
 import Report from './pages/ReportPage'
+import DetailReport from './pages/DetailReport'
 
 import { authenticated } from './store/action/ProductAction'
 
@@ -41,8 +42,9 @@ function App() {
             <Route path='/:id/detail' component={DetailProductPage} />
             {/* <Route path='*' component={ NotFound }/> */}
             <GuardedRoute path='/create-report' component={CreateReport} auth={isAuthenticated} />
-            <GuardedRoute path='/transaction' component={TransactionPage} auth={isAuthenticated} />
+            <GuardedRoute path='/transaction/:order_id' component={TransactionPage} auth={isAuthenticated} />
             <GuardedRoute path='/report' component={Report} auth={isAuthenticated} />
+            <Route path='/:id/detail-report' component={DetailReport} />
           </Switch>
         </div>
       </Router>

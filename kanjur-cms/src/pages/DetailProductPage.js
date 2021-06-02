@@ -57,6 +57,7 @@ function EditProductPage(props) {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deleteProduct(data.id))
+        history.push('/')
       }
     })
   }

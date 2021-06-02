@@ -27,7 +27,7 @@ function Navbar() {
         <Link to="/add"><div className="nav-item item btn" style={{width:"100%"}}><p style={{textAlign:"left"}}>Add new Product</p></div></Link>
         <Link to="/create-report"><div className="nav-item item btn" style={{width:"100%"}}><p style={{textAlign:"left"}}>Create Daily Report</p></div></Link>
         <Link to="/report"><div className="nav-item item btn" style={{width:"100%"}}><p style={{textAlign:"left"}}>Report</p></div></Link>
-        <Link to="/transaction"><div className="nav-item item btn" style={{width:"100%"}}><p style={{textAlign:"left"}}>Transaction</p></div></Link>
+        <Link to="/transaction/ORDER"><div className="nav-item item btn" style={{width:"100%"}}><p style={{textAlign:"left"}}>Transaction</p></div></Link>
       </div>
         <div className="section navbar-nav mx-auto">
           <button className="nav-item item btn" onClick={(e) => {
