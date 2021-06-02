@@ -1,6 +1,6 @@
 import axios from 'axios'
 const axiosInstance = axios.create({
-  baseURL: 'http://54.151.182.9:3000'
+  baseURL: 'https://kanjur-test.herokuapp.com'
 })
 
 export function fetchTransaction() {

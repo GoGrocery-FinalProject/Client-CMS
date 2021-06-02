@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
 const axiosInstance = axios.create({
-  baseURL: 'http://54.151.182.9:3000'
+  baseURL: 'https://kanjur-test.herokuapp.com'
 })
 
 export function login(email, password) {
@@ -26,7 +26,6 @@ export function login(email, password) {
         })
       })
       .catch((err) => {
-        console.log(err)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
