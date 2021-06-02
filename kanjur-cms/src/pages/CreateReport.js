@@ -100,8 +100,8 @@ function CreateReport() {
               <th className="col-2">Name</th>
               <th className="col-2">Img Preview</th>
               <th className="col-2">Barcode Number</th>
-              <th className="col-1">Current Stock</th>
-              <th className="col-1">Recorded Stock</th>
+              <th className="col-1" style={{textAlign: "center"}}>Current<br></br>Stock</th>
+              <th className="col-1" style={{textAlign: "center"}}>Recorded<br></br>Stock</th>
               <th className="col-2">Real Stock</th>
               <th className="col-1">Action</th>
             </tr>
@@ -116,9 +116,9 @@ function CreateReport() {
                   <td className="text-heading font-semibold">{ el.id }</td>
                   <td className="text-heading font-semibold">{ el.name }</td>
                   <td><img alt="product-img" src={ el.image_url } width="100px"></img></td>
-                  <td className="text-heading font-semibold">{ el.barcode_number }</td>
-                  <td className="form-label justify-content-center">{ el.stock }</td>
-                  <td className="text-heading font-semibold">{ report[i].stockRecorded}</td>
+                  <td className="text-heading font-semibold" style={{textAlign: "center"}}>{ el.barcode_number }</td>
+                  <td className="form-label justify-content-center" style={{textAlign: "center"}}>{ el.stock } pcs</td>
+                  <td className="text-heading font-semibold" style={{textAlign: "center"}}>{ report[i].stockRecorded} pcs</td>
                   <td>
                     <input 
                       type="number" 

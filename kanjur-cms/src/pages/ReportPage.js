@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchReport } from '../store/action/ReportAction'
+import rupiahFormater from '../helpers/rupiahForamat'
+import { useHistory } from 'react-router-dom'
+import { masa } from 'masa';
 
 function Report() {
+  const history = useHistory()
   const reports = useSelector(state => state.reports)
   const [filterDate, setFilterDate] = useState("")
   const dispatch = useDispatch()
@@ -11,8 +15,7 @@ function Report() {
   useEffect(() => {
     dispatch(fetchReport())
   }, [dispatch])
-
-  
+ 
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
@@ -29,12 +32,10 @@ function Report() {
           <table className="table table-hover table-nowrap">
             <thead className="thead-light">
               <tr>
-                <th className="col-1" scope="col">Id</th>
-                <th className="col-1" scope="col">Transaction</th>
-                <th className="col-4" scope="col">Products</th>
+                <th className="col-3" scope="col">Report Date</th>
                 <th className="col-2" scope="col">Income</th>
+                <th className="col-2" scope="col">Loss</th>
                 <th className="col-2" scope="col">Losses</th>
-                <th className="col-2" scope="col">Report Date</th>
               </tr>
             </thead>
             <tbody >
@@ -48,32 +49,17 @@ function Report() {
                 }).map(el => {
                   return (
                     <tr key={el.id}>
-                      <td className="text-heading font-semibold">{el.id}</td>
-                      <td className="text-heading font-semibold">
-                        {
-                          JSON.parse(el.transactions).map(transaction => {
-                            return (
-                              <p key={transaction.id}>id:{transaction.id}, OrderId: {transaction.order_id} </p>
-                            )
-                          })
-                        }
-                      </td>
-                      <td className="text-heading font-semibold">
-                        {
-                          JSON.parse(el.products).map((product) => {
-                            return (
-                              <p key={product.ProductId}>Id:{product.ProductId}
-                               - StockRecorded:{product.stockRecorded}
-                               - StockReal:{product.stockReal}
-                               - DiffStock:{product.stockRecorded - product.stockReal}
-                               - Loss: {(product.stockRecorded - product.stockReal) * product.price}</p>
-                            )
-                          })
-                        }
-                      </td>
-                      <td className="text-heading font-semibold">{el.income}</td>
-                      <td className="text-heading font-semibold">{el.loss}</td>
-                      <td className="text-heading font-semibold">{el.createdAt.slice(0,10)}</td>
+                      <td className="text-heading font-semibold">{masa(new Date(el.createdAt)).format('[Hari] dddd, [Tanggal] D MMMM YYYY')}</td>
+                      <td className="text-heading font-semibold">{rupiahFormater(el.income)}</td>
+                      <td className="text-heading font-semibold">{rupiahFormater(el.loss)}</td>
+                      <td><button className="btn btn-secondary" 
+                        onClick={(e) => {
+                        e.preventDefault()
+                        history.push({
+                          pathname: `/${el.id}/detail-report`,
+                          state: { data: el }
+                        })
+                      }}>Detail</button></td>
                     </tr>
                   )
                 })
