@@ -1,32 +1,66 @@
 import axios from 'axios'
+import Swal from 'sweetalert2'
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'https://kanjur-test.herokuapp.com'
 })
 
-export function login() {
+export function login(email, password) {
   return function (dispatch) {
-    dispatch({ type: "LOGIN", payload: { name: 'a' } })
+    axiosInstance({
+      method: 'POST',
+      url: '/login',
+      data: {
+        email,
+        password
+      }
+    })
+      .then((response) => {
+        localStorage.setItem("access_token", response.data.token)
+        dispatch({ type: "LOGIN", payload: response.data })
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login Successfully',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response.data.message}`,
+        })
+      })
+  }
+}
+
+export function authenticated() {
+  return function (dispatch) {
+    dispatch({ type: "AUTHENTICATED" })
   }
 }
 
 export function logout() {
   return function (dispatch) {
     dispatch({ type: "LOGOUT" })
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Logout Successfully',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 }
 
 export function fetchProduct() {
   return function (dispatch) {
-    // let payload = {
-    //   data: [],
-    //   loading: true,
-    //   error: null
-    // }
     axiosInstance({
       method: 'GET',
       url: '/products',
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       }
     })
       .then((response) => {
@@ -38,18 +72,13 @@ export function fetchProduct() {
   }
 }
 
-export function fetchProductById(id) {
+export function fetchProductById(barcode) {
   return function (dispatch) {
-    // let payload = {
-    //   data: [],
-    //   loading: true,
-    //   error: null
-    // }
     axiosInstance({
       method: 'GET',
-      url: `/products/${id}`,
+      url: `/products/${barcode}`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       }
     })
       .then((response) => {
@@ -63,12 +92,11 @@ export function fetchProductById(id) {
 
 export function addProduct(payload) {
   return function (dispatch) {
-    // console.log(payload, id)
     axiosInstance({
       method: 'POST',
       url: `/products/`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
       data: {
         name: payload.name,
@@ -81,6 +109,13 @@ export function addProduct(payload) {
       }
     })
       .then((response) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: `Item ${payload.name} has been added`,
+          showConfirmButton: false,
+          timer: 1500
+        })
         dispatch(fetchProduct())
       })
       .catch((err) => {
@@ -91,12 +126,11 @@ export function addProduct(payload) {
 
 export function editProduct(id, payload) {
   return function (dispatch) {
-    // console.log(payload, id)
     axiosInstance({
       method: 'PUT',
       url: `/products/${id}`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
       data: {
         name: payload.name,
@@ -117,39 +151,21 @@ export function editProduct(id, payload) {
   }
 }
 
-export function patchStockProduct(id, payload) {
-  return function (dispatch) {
-    // console.log(payload, id)
-    axiosInstance({
-      method: 'PATCH',
-      url: `/products/${id}`,
-      headers: {
-        access_token: localStorage.access_token
-      },
-      data: {
-        stock: +payload.stock
-      }
-    })
-      .then((response) => {
-        dispatch(editProduct(id, { stockBefore: payload.stock, name: payload.data.name, stock: payload.stock }))
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-}
-
 export function deleteProduct(id) {
   return function (dispatch) {
-    // console.log(payload, id)
     axiosInstance({
       method: 'DELETE',
       url: `/products/${id}`,
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
     })
-      .then((response) => {
+      .then(() => {
+        Swal.fire(
+          'Deleted!',
+          'this product has been deleted.',
+          'success'
+        )
         dispatch(fetchProduct())
       })
       .catch((err) => {

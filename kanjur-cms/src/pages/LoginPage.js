@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import bacground from '../assets/bg_1.jpg'
 import { Redirect } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../store/action/ProductAction'
 
-function Login({auth}) {
+function Login() {
   const dispatch = useDispatch()
   const isAuthenticated = useSelector(state => state.isAuthenticated)
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   function handleLogin() {
-    localStorage.setItem('access_token', 'adatoken')
-    dispatch(login())
+    dispatch(login(email, password))
   }
 
   if (isAuthenticated === true) {
@@ -38,18 +39,22 @@ function Login({auth}) {
                     <input
                       id="inputEmail"
                       type="email"
+                      value={email}
                       placeholder="Email address"
                       required
                       className="form-control rounded-pill border-0 shadow-sm px-4"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="form-group mb-3">
                     <input
                       id="inputPassword"
                       type="password"
+                      value={password}
                       placeholder="Password"
                       required
                       className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                   <button 

@@ -1,6 +1,6 @@
 import axios from 'axios'
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'https://kanjur-test.herokuapp.com'
 })
 
 export function fetchTransaction() {
@@ -9,11 +9,11 @@ export function fetchTransaction() {
       method: 'GET',
       url: '/transactions',
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       }
     })
       .then((response) => {
-        dispatch({ type: "GET_ALL_TRANSACTION", payload: response.data })
+        dispatch({ type: "GET_ALL_TRANSACTION", payload: response.data.transactions })
       })
       .catch((err) => {
         console.log(err)
@@ -27,7 +27,7 @@ export function fetchReport() {
       method: 'GET',
       url: '/reports',
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       }
     })
       .then((response) => {
@@ -45,7 +45,7 @@ export function postReport(payload) {
       method: 'POST',
       url: '/reports',
       headers: {
-        access_token: localStorage.access_token
+        token: localStorage.access_token
       },
       data: payload
     })

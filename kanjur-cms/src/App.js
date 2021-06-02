@@ -13,19 +13,19 @@ import Login from './pages/LoginPage';
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage'
 import AddProductPage from './pages/AddProductPage'
-import EditProductPage from './pages/EditProductPage'
+import DetailProductPage from './pages/DetailProductPage'
 import TransactionPage from './pages/TransactionPage';
 import GuardedRoute from './components/GuarderRoute'
 import CreateReport from './pages/CreateReport'
 import Report from './pages/ReportPage'
 
-import { login } from './store/action/ProductAction'
+import { authenticated } from './store/action/ProductAction'
 
 function App() {
   const isAuthenticated = (store.getState().isAuthenticated)
   useEffect(() => {
     if(localStorage.access_token){
-      store.dispatch(login())
+      store.dispatch(authenticated())
     }
   }, [])
   return (
@@ -38,7 +38,7 @@ function App() {
             <Route path='/about' component={AboutPage} />
             <Route path='/login' render={(props) => <Login {...props} auth={isAuthenticated}/>}/>
             <GuardedRoute path='/add' component={AddProductPage} auth={isAuthenticated} />
-            <Route path='/:id/edit' component={EditProductPage} />
+            <Route path='/:id/detail' component={DetailProductPage} />
             {/* <Route path='*' component={ NotFound }/> */}
             <GuardedRoute path='/create-report' component={CreateReport} auth={isAuthenticated} />
             <GuardedRoute path='/transaction' component={TransactionPage} auth={isAuthenticated} />

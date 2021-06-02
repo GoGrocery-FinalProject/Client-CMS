@@ -21,19 +21,20 @@ function HomePage() {
   }
 
   function handleReport() {
-    history.push('/report')
+    history.push('/create-report')
   }
 
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
-      <div className="container" style={{ width: "85vw", marginTop: "5vh" }}>
-        <h2 className="card-header">Product List</h2>
-        <div className="d-flex justify-content-between row">
+      <div className="container card" style={{ width: "85vw", marginTop: "3vh", height:"95vh" }}>
+        <h2 className="card-header" style={{marginTop: "1vh"}}>Product List</h2>
+        <div className="d-flex justify-content-between row" style={{ marginTop:"3vh"}}>
           <div className="col-2">
             <input
               className="form-control form-text"
               type="number"
+              style={{width:"100%"}}
               value={filterId}
               onChange={(e) => setFilterId(e.target.value)}
               placeholder="Filter by Id Here">
@@ -43,6 +44,7 @@ function HomePage() {
             <input
               className="form-control form-text"
               type="text"
+              style={{width:"100%"}}
               value={filterName}
               onChange={(e) => setFilterName(e.target.value)}
               placeholder="Filter by Name Here">
@@ -50,7 +52,8 @@ function HomePage() {
           </div>
           <div className="col-2">
             <button
-              className="btn btn-light"
+              className="btn btn-secondary"
+              style={{width:"100%"}}
               onClick={(e) => {
                 e.preventDefault()
                 handleAddProduct()
@@ -60,31 +63,28 @@ function HomePage() {
           <div className="col-2">
             <button
               className="btn btn-warning"
+              style={{width:"100%"}}
               onClick={(e) => {
                 e.preventDefault()
-                handleAddProduct()
+                handleReport()
               }}
             >Create Report</button>
           </div>
-          
         </div>
-        <div className="card" style={{height: "75vh"}}>
+        <div className="card" style={{height: "75vh", marginTop:"3vh"}}>
           <div className="container table-wrapper-scroll-y my-custom-scrollbar table-responsive">
             <table className="table table-hover table-nowrap"  style={{"tableLayout": "fixed", "overFlow": "breakWord"}}>
               <thead className="thead-light">
                 <tr>
-                  <th className="col-1">Id</th>
-                  <th className="col-2">Name</th>
-                  <th className="col-2">Img Preview</th>
-                  <th className="col-2">Barcode Number</th>
-                  <th className="col-2">Stock</th>
-                  <th className="col-1">Price</th>
-                  <th className="col-2">Action</th>
+                  <th className="" style={{width:"5em"}}>Id</th>
+                  <th className="col-4" >Name</th>
+                  <th className="col-2" style={{textAlign: "center", color:""}}>Image</th>
+                  <th className="col-3" style={{textAlign: "center"}}>Barcode Number</th>
+                  <th className="col-1" style={{textAlign: "center"}}>Stock</th>
+                  <th className="col-1" style={{textAlign: "center"}}>Price</th>
+                  <th className="col-2" style={{textAlign: "center"}}>Action</th>
                 </tr>
               </thead>
-              {/**
-           * nanti looping pake map buat list product
-          */}
               {
                 products.filter(item => {
                   if(filterId === "") {
@@ -92,7 +92,7 @@ function HomePage() {
                   } else {
                     return +item.id === +filterId
                   }
-                }).map(el => {
+                }).sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0)).map(el => {
                   return (
                     <ListProduct
                       key={el.id}
@@ -101,7 +101,6 @@ function HomePage() {
                   )
                 })
               }
-
             </table>
           </div>
           <div className="container col-4">

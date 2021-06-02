@@ -4,7 +4,6 @@ const initialState = {
   reports: [],
   product: {},
   isAuthenticated: false,
-  user: {}
 }
 
 function reducer(state = initialState, action) {
@@ -19,7 +18,9 @@ function reducer(state = initialState, action) {
     case "GET_ALL_REPORT":
       return { ...state, reports: payload }
     case "LOGIN":
-      return { ...state, user: payload, isAuthenticated: true }
+      return { ...state, isAuthenticated: true }
+    case "AUTHENTICATED":
+      return { ...state, isAuthenticated: true }
     case "LOGOUT":
       return { ...state, user: {}, isAuthenticated: false }
     default:
