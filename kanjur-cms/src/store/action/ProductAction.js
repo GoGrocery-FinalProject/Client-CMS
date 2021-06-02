@@ -26,6 +26,7 @@ export function login(email, password) {
         })
       })
       .catch((err) => {
+        console.log(err)
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
