@@ -15,9 +15,9 @@ function Navbar() {
   return (
     <div className="sidebar">
       <div className="section navbar-nav mx-auto">
-        <div className="card" style={{marginTop:"3vh"}}>
+        <div className="" style={{marginTop:"3vh", justifyContent:"center", marginLeft: "3vh"}}>
           <img 
-            style={{width:"100%", alignContent:"center", justifyContent:"center"}}
+            style={{width:"60%", alignContent:"center", justifyContent:"center"}}
             alt="logo app"
             src={logo}>
           </img>
