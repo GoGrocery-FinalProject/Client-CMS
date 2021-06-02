@@ -21,8 +21,8 @@ function TransactionPage() {
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
-      <div className="row container" style={{ width: "85vw", marginTop: "5vh" }}>
-        <div className="col-12 card container table-wrapper-scroll-y my-custom-scrollbar table-responsive" style={{ height: "90vh" }}>
+      <div className="row container " style={{ width: "85vw", marginTop: "5vh" }}>
+        <div className="col-12 card container" style={{ height: "90vh" }}>
           <h2 style={{ marginTop: "3vh" }}>Transaction Record </h2>
           <div className="row">
             <div className="col-6">
@@ -41,50 +41,53 @@ function TransactionPage() {
                 onChange={(e) => setFilterDate((e.target.value).slice(0,10))}></input>
             </div>
           </div>
-          <table className="table table-hover table-nowrap">
-            <thead className="thead-light">
-              <tr>
-                <th className="col-1" scope="col">Id</th>
-                <th className="col-1" scope="col">UserId</th>
-                <th className="col-4" scope="col">Products</th>
-                <th className="col-2" scope="col">TotalPrice</th>
-                <th className="col-2" scope="col">OrderId</th>
-                <th className="col-2" scope="col">Transaction Date</th>
-              </tr>
-            </thead>
-            <tbody >
-              {
-                transaction.filter(transa => {
-                  if(filterOrderId === ""){
-                    if(filterDate === "") {
-                      return transa
+          <div className="table-wrapper-scroll-y my-custom-scrollbar table-responsive">
+            <table className="table">
+              <thead className="thead-light">
+                <tr>
+                  <th className="col-1" scope="col">UserId</th>
+                  <th className="col-4" scope="col">Products</th>
+                  <th className="col-2" scope="col">TotalPrice</th>
+                  <th className="col-2" scope="col">OrderId</th>
+                  <th className="col-2" scope="col">Transaction Date</th>
+                </tr>
+              </thead>
+
+              <tbody >
+                {
+                  transaction.filter(transa => {
+                    if(filterOrderId === ""){
+                      if(filterDate === "") {
+                        return transa
+                      } else {
+                        return transa.createdAt.slice(0,10) === filterDate
+                      }
                     } else {
-                      return transa.createdAt.slice(0,10) === filterDate
+                      return transa.order_id.toLowerCase().includes(filterOrderId.toLowerCase())
                     }
-                  } else {
-                    return transa.order_id.toLowerCase().includes(filterOrderId.toLowerCase())
-                  }
-                }).map(el => {
-                  return (
-                    <tr key={el.id}>
-                      <td className="text-heading font-semibold">{el.id}</td>
-                      <td className="text-heading font-semibold">{el.UserId}</td>
-                      <td className="text-heading font-semibold">
-                        {
-                          JSON.parse(el.products).map((product, i) => {
-                            return (<p key={i}>id: {product.id}, name: {product.name}   Quantity: {product.quantity}</p>)
-                          })
-                        } 
-                      </td>
-                      <td className="text-heading font-semibold">{el.totalPrice}</td>
-                      <td className="text-heading font-semibold">{el.order_id}</td>
-                      <td className="text-heading font-semibold">{el.createdAt.slice(0,10)}</td>
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
-          </table>
+                  }).filter(({status}) => {
+                    return status === "paid"
+                  }).map(el => {
+                    return (
+                      <tr key={el.id}>
+                        <td className="text-heading font-semibold">{el.UserId}</td>
+                        <td className="text-heading font-semibold">
+                          {
+                            JSON.parse(el.products).map((product, i) => {
+                              return (<p key={i}>id: {product.id}, name: {product.name}   Quantity: {product.quantity}</p>)
+                            })
+                          } 
+                        </td>
+                        <td className="text-heading font-semibold">{el.totalPrice}</td>
+                        <td className="text-heading font-semibold">{el.order_id}</td>
+                        <td className="text-heading font-semibold">{el.createdAt.slice(0,10)}</td>
+                      </tr>
+                    )
+                  })
+                }
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

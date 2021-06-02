@@ -27,9 +27,9 @@ function HomePage() {
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
-      <div className="container card" style={{ width: "85vw", marginTop: "3vh", height:"95vh" }}>
+      <div className="container card" style={{ width: "85vw", marginTop: "3vh", height:"95vh", marginBottom: "3vh" }}>
         <h2 className="card-header" style={{marginTop: "1vh"}}>Product List</h2>
-        <div className="d-flex justify-content-between row" style={{ marginTop:"3vh"}}>
+        <div className="d-flex justify-content-between row" style={{ marginTop:"3vh",}}>
           <div className="col-2">
             <input
               className="form-control form-text"
@@ -53,7 +53,7 @@ function HomePage() {
           <div className="col-2">
             <button
               className="btn btn-secondary"
-              style={{width:"100%"}}
+              style={{width:"100%", fontSize:12}}
               onClick={(e) => {
                 e.preventDefault()
                 handleAddProduct()
@@ -63,7 +63,7 @@ function HomePage() {
           <div className="col-2">
             <button
               className="btn btn-warning"
-              style={{width:"100%"}}
+              style={{width:"100%", fontSize:12}}
               onClick={(e) => {
                 e.preventDefault()
                 handleReport()
@@ -71,15 +71,15 @@ function HomePage() {
             >Create Report</button>
           </div>
         </div>
-        <div className="card" style={{height: "75vh", marginTop:"3vh"}}>
+        <div className="card" style={{height: "70%", marginTop:"3vh", marginBottom:"3vh"}}>
           <div className="container table-wrapper-scroll-y my-custom-scrollbar table-responsive">
             <table className="table table-hover table-nowrap"  style={{"tableLayout": "fixed", "overFlow": "breakWord"}}>
               <thead className="thead-light">
                 <tr>
-                  <th className="" style={{width:"5em"}}>Id</th>
-                  <th className="col-4" >Name</th>
-                  <th className="col-2" style={{textAlign: "center", color:""}}>Image</th>
-                  <th className="col-3" style={{textAlign: "center"}}>Barcode Number</th>
+                  <th className="" style={{width:"5px"}}>Id</th>
+                  <th className="col-3" >Name</th>
+                  <th className="col-2" style={{textAlign: "center"}}>Image</th>
+                  <th className="col-2" style={{textAlign: "center"}}>Barcode Number</th>
                   <th className="col-1" style={{textAlign: "center"}}>Stock</th>
                   <th className="col-1" style={{textAlign: "center"}}>Price</th>
                   <th className="col-2" style={{textAlign: "center"}}>Action</th>
