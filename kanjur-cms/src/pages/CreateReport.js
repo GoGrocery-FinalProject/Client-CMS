@@ -82,7 +82,7 @@ function CreateReport() {
   return (
     <div style={{ display: "flex"}}>
     <Navbar/>
-    <div className="row card container" style={{width: "85vw", marginTop: "5vh", height: "88vh"}}>
+    <div className="row card container" style={{width: "85vw", marginTop: "5vh", height: "95vh"}}>
       <h2 className="card-header">Create Daily Product Report</h2>
       <input
         className="form-control form-text"
