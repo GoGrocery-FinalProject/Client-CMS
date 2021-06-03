@@ -65,7 +65,7 @@ function EditProductPage(props) {
   return (
     <div style={{ display: "flex" }}>
       <Navbar />
-      <div id="addproduct-page" className="container" style={{ marginTop: '8vh', width: "85vw" }}>
+      <div id="addproduct-page" className="container" style={{ marginTop: '3vh', width: "85vw" }}>
         <form
           id="addform"
           onSubmit={(e) => {
@@ -73,7 +73,6 @@ function EditProductPage(props) {
             handleEditutton()
           }}
           className="card border-2 container bg-white"
-          style={{ padding: '3rem' }}
         >
           <h2 className="card-header">Detail Product</h2>
           <div className="row" style={{marginTop: "5vh"}}>
@@ -146,12 +145,12 @@ function EditProductPage(props) {
             }
             </div>
           </div>
-        <div className="row" style={{marginTop: "5vh"}}>
-          <button className="btn btn-warning col-1" onClick={(e) => { 
+        <div className="row" style={{marginTop: "3vh", marginBottom: "3vh"}}>
+          <button className="btn btn-warning col-2" onClick={(e) => { 
             e.preventDefault()
             handleEditable() 
           }}>Edit</button>
-          <button className="btn btn-danger col-1" onClick={(e) => {
+          <button className="btn btn-danger offset-1 col-2" onClick={(e) => {
             e.preventDefault()
             handleDelete() 
           }}>Delete</button>
