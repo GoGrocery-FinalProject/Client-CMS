@@ -1,0 +1,86 @@
+{
+  "products": [
+    {
+      "name": "Ultra mimi Fullcream",
+      "barcode_number": "8998009011696",
+      "image_url": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-2556645/ultra_ultra-mimi-full-cream-susu-uht--125-ml-_full04.jpg",
+      "description": "susu fullcream 100ml",
+      "price": 3500,
+      "stock": 8,
+      "stockBefore": 8,
+      "id": 1
+    },
+    {
+      "name": "Mix Nut Dua Kelinci",
+      "barcode_number": "8995077603679",
+      "image_url": "https://cf.shopee.co.id/file/957d96b90eaa9d184fd8793d1e362925",
+      "description": "Kaang campur 150gr",
+      "price": 25000,
+      "stock": 6,
+      "stockBefore": 6,
+      "id": 2
+    },
+    {
+      "name": "Cleo Mineral Water 600ml",
+      "barcode_number": "8996129804099",
+      "image_url": "https://s1.bukalapak.com/img/66029142702/large/2020_04_17T15_40_37_07_00.jpg",
+      "description": "https://s1.bukalapak.com/img/66029142702/large/2020_04_17T15_40_37_07_00.jpg",
+      "price": 3000,
+      "stock": 15,
+      "stockBefore": 4,
+      "id": 3
+    },
+    {
+      "name": "Chitato 40gr",
+      "barcode_number": "89686598476",
+      "image_url": "https://cf.shopee.co.id/file/0cae4d70eae1c63ea95f6f8d77d5bdd4",
+      "description": "CHITATO PTO CHIPS 35G CHICKEN BBQ",
+      "price": 8500,
+      "stock": 8,
+      "stockBefore": 5,
+      "id": 4
+    },
+    {
+      "name": "Indome Goreng 1 pcs",
+      "barcode_number": "818201988924",
+      "image_url": "https://images.tokopedia.net/img/cache/700/product-1/2020/2/19/47871595/47871595_b6aa9df0-846b-4846-95d1-940248340634_1000_1000",
+      "description": "Indomie Instant Fried Noodles",
+      "price": 2500,
+      "stock": 20,
+      "stockBefore": 4,
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "user@mail.com",
+      "password": 1234
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "UserId": 1,
+      "Products": "[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]",
+      "totalPrice": 10500,
+      "OrderId": "OD101-12197"
+    },
+    {
+      "id": 2,
+      "UserId": 1,
+      "Products": "[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]",
+      "totalPrice": 10500,
+      "OrderId": "OD101-12198"
+    }
+  ],
+  "reports": [
+    {
+      "products": "[{\"ProductId\":1,\"stockRecorded\":4,\"stockReal\":4,\"price\":3500},{\"ProductId\":2,\"stockRecorded\":1,\"stockReal\":1,\"price\":4321},{\"ProductId\":3,\"stockRecorded\":4,\"stockReal\":4,\"price\":24566},{\"ProductId\":4,\"stockRecorded\":5,\"stockReal\":5,\"price\":412},{\"ProductId\":5,\"stockRecorded\":4,\"stockReal\":4,\"price\":421412}]",
+      "transactions": "[{\"id\":1,\"UserId\":1,\"Products\":\"[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]\",\"totalPrice\":10500,\"OrderId\":\"OD101-12197\"},{\"id\":2,\"UserId\":1,\"Products\":\"[{ProductId:1, quantity:3},{ProductId:2, quantity:3},{ProductId:3, quantity:3}]\",\"totalPrice\":10500,\"OrderId\":\"OD101-12198\"}]",
+      "income": 21000,
+      "loss": 0,
+      "id": 1
+    }
+  ]
+}
